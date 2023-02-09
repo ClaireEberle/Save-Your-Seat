@@ -1,6 +1,24 @@
+:root{
+    --redbtn-background-color:#c1121f;
+    --whitefont-color:#ffffff;
+}
+
 *{
     box-sizing: border-box;
     margin:0;
     padding:0;
     font-family: sans-serif;
+}
+
+#userview-1-choice{
+    display: flex;
+    border:1px solid black;
+}
+
+.userview-1-btn{
+    background-color: var(--redbtn-background-color);
+    padding: 1em;
+    margin-right:5px;
+    color:var(--whitefont-color);
+    border:1px solid yellow;
 }
