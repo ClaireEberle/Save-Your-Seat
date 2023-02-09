@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 //const session = require('express-session');
 //const exphbs = require('express-handlebars');
-const allRoutes = require('./controllers');
+// const allRoutes = require('./controllers');
 
 const sequelize = require('./config/connection');
 //const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(allRoutes);
+// app.use(allRoutes);
 
 sequelize.sync({force:false}).then(function() {
     app.listen(PORT, () => {
