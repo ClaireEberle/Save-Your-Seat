@@ -1,5 +1,6 @@
 :root{
-    --redbtn-background-color:#c1121f,
+    --redbtn-background-color:#c1121f;
+    --whitefont-color:#ffffff;
 }
 
 *{
@@ -10,9 +11,14 @@
 }
 
 #userview-1-choice{
-    display: inline;
+    display: flex;
+    border:1px solid black;
 }
 
 .userview-1-btn{
     background-color: var(--redbtn-background-color);
+    padding: 1em;
+    margin-right:5px;
+    color:var(--whitefont-color);
+    border:1px solid yellow;
 }
