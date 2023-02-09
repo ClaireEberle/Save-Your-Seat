@@ -10,6 +10,14 @@
     font-family: sans-serif;
 }
 
+header{
+    font-family: 'Dancing Script', cursive;
+    font-size:500%;
+    border-bottom:3px solid var(--redbtn-background-color);
+    text-align: center;
+    padding:2%;
+}
+
 #userview-1-choice{
     display: flex;
     border:1px solid black;
