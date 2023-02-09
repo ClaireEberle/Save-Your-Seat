@@ -1,4 +1,4 @@
-// Wed February 9 2023 @ 11:10am SB
+
 
 DROP DATABASE IF EXISTS restaurant_db;
 
