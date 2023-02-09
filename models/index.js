@@ -1,12 +1,12 @@
 const Customer = require("./Customer");
 const Reseravation = require("./Reservation");
-const Table = require("./Table");
+const Owner = require("./Owner");
 
-Table.hasmany(Reseravation)
-Reseravation.hasmany(Reseravation)
+Owner.hasmany(Reseravation)
+Reseravation.hasmany(Customer)
 
 Reseravation.belongsTo(Customer)
-Customer.belongsTo(time_slot)
+Customer.belongsTo(Owner)
 
 module.exports = {
     Customer,
