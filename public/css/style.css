@@ -1,6 +1,18 @@
+:root{
+    --redbtn-background-color:#c1121f,
+}
+
 *{
     box-sizing: border-box;
     margin:0;
     padding:0;
     font-family: sans-serif;
+}
+
+#userview-1-choice{
+    display: inline;
+}
+
+.userview-1-btn{
+    background-color: var(--redbtn-background-color);
 }
