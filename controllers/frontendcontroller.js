@@ -27,9 +27,17 @@ router.get("/seereservation",(req,res) =>{
     res.render("userview2-2");
 })
 
-router.get("/", (req, res) => {
+router.get("/restaurantLogin", (req, res) => {
   res.render("restaurantLogin");
 });
+
+router.get("/", (req, res) => {
+  res.render("home");
+});
+
+router.get("/customerLogin", (req,res)=>{
+  res.render("customerLogin")
+})
 
 router.get("/customers", (req, res) => {
   res.render("userview1");
