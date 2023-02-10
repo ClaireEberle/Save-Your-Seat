@@ -12,7 +12,8 @@ Reservation.init({
         autoIncrement: true
       },
     reservation_date:{
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
+        defaultValue: DataTypes.NOW,
         allowNull:false,
     },
     reservation_time:{
