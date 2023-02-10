@@ -4,6 +4,7 @@ document.querySelector("#restLoginForm").addEventListener("submit",e=>{
         email:document.querySelector("#restLoginEmail").value,
         password:document.querySelector("#restLoginPassword").value
     }
+
    location.href="/restaurants"
 })
 
