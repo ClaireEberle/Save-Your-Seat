@@ -16,3 +16,5 @@ Owner.init({
 }, {
     sequelize
 })
+
+module.exports=Owner
