@@ -12,7 +12,18 @@ router.get("/",(req,res)=>{
      res.status(500).json({msg:err})
     })
  })
- //user Signup
+
+ router.get("/:id",(req,res)=>{
+   Customer.findByPk(req.params.id,{
+   //{include:[{model:Reservation, as: 'reservation'}]}
+   }).then(userData=>{
+    res.json(userData)
+   }).catch(err=>{
+    console.log(err);
+    res.status(404).json({msg:err})
+   })
+})
+
  router.post("/",(req,res)=>{
     console.log(req.body);
    Customer.create({
@@ -27,36 +38,27 @@ router.get("/",(req,res)=>{
     res.status(500).json({msg:err})
    })
 })
-router.post("/login", (req,res)=>{
-Customer.findOne({
-   where:{
-      email:req.body.email,
-   },
+
+router.post("/login",(req,res)=>{
+   Customer.findOne({
+      where:{
+         email: req.body.email
+      }
+   }).then(userData =>{
+      if(!userData){
+         return res.status(401).json({msg:"incorrect email or password"})
+      } else {
+         if(bcrypt.compareSync(req.body.password,userData.password)){
+         req.session.userId = userData.id;
+         req.session.userEmail = userData.email;
+         return res.json(userData)
+         } else {
+            return res.status(401).json({msg:"incorrect email or password"})
+         }
+      }
+   }).catch(err=>{
+      console.log(err);
+      res.status(500).json({msg:err})
+     })
 })
-.then((customerObj)=>{
-if(!customerObj){
-   return res.status(401).json({msg:"invalid credentials"});
-}if(bcrypt.compareSync(req.body.password, customerObj.password)){
-   req.session.customerId = customerObj.id;
-   req.session.Data = {
-      username: customerObj.username,
-      email:customerObj.email
-   };
-   req.session.loggedIn = true;
-
-   return res.json(customerObj);
-}else{
-   return res.status(401).json({msg:"invalid credentials"});
-}
-})
-.catch((err)=>{
-   console.log(err);
-   res.status(500).json({
-      msg:"something went wrong",
-      err,
-   });
-});
-});
-
-
 module.exports = router;
