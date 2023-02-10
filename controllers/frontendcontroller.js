@@ -7,4 +7,9 @@ router.get("/customers",(req,res)=>{
     res.render("userview1")
     })
 
+router.get("/",(req,res)=>{
+    res.render("restaurantLogin")
+    })
+    
+
 module.exports = router;

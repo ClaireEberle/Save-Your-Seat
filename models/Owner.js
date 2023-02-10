@@ -4,6 +4,15 @@ const bcrypt = require("bcrypt")
 
 class Owner extends Model {}
 
-Reservation.init({
+Owner.init({
     // TODO
+    // next priorty
+    table_number: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+
+
+}, {
+    sequelize
 })
