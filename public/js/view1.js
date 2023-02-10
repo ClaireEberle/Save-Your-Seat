@@ -9,3 +9,8 @@ document.querySelector("#customerBtn").addEventListener("click",e=>{
 
     location.href="/customerLogin";
 })
+document.querySelector("#newcustomerBtn").addEventListener("click",e=>{
+    e.preventDefault();
+
+    location.href="/customerSignup";
+})

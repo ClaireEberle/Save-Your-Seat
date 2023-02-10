@@ -46,6 +46,9 @@ router.get("/restaurants", (req, res) => {
 router.get("/customerLogin", (req,res)=>{
   res.render("view2")
 })
+router.get("/customerSignup", (req,res)=>{
+  res.render("view2-0")
+})
 
 router.get("/customers", (req, res) => {
   res.render("userview1");
