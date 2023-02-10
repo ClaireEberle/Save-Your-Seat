@@ -5,22 +5,39 @@ const bcrypt = require("bcrypt")
 class Customer extends Model {}
 
 Customer.init({
-    // TODO
-    // first priorty
-    // email: "test@gmail.com",
-    // phonenumber: 2065555555
+    id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
     email :{
-    type: DataTypes.STRING,
-    allowNull: false
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique:true,
+        validate:{
+            isEmail:true
+        }
     },
-
-    phonenumber: {
+    password:{
         type:DataTypes.STRING,
-        allowNull: false
-
+        allowNull:false,
+        validate:{
+            len:[8]
+        }
     }
 }, {
-    sequelize
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName:'customer',
+    hooks:{
+        beforeCreate:userObj=>{
+            userObj.password = bcrypt.hashSync(userObj.password,4);
+            return userObj;
+        }
+    }
 }
 
 )
