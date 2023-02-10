@@ -63,6 +63,12 @@ flex-wrap:wrap;
   padding:5% 0 5% 0
 }
 
+.reservation-form{
+  display: flex;
+  flex-direction: column;
+  line-height: 3em;
+}
+
 .form-btn {
   margin-top: 2em;
   background:var(--redbtn-background-color);

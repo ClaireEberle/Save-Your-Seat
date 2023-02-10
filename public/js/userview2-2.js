@@ -1,25 +1,18 @@
-document.querySelector("#make-reservation-form").addEventListener("submit",e=>{
+document.querySelector("#edit-reservation").addEventListener("click",e=>{
   e.preventDefault();
-  const customerObj = {
-    available_date:document.querySelector("#datepicker").value,
-    available_meal:document.querySelector("#party-time").value,
-    table_capacity:document.querySelector("#party-size").value,
-}
-console.log(customerObj)
-fetch("/seereservation",{
-    method:"POST",
-    body:JSON.stringify(customerObj),
-    headers:{
-        "Content-Type":"application/json"
-    }
-}).then(res=>{
-    if(res.ok){
-       console.log("hello")
-    } else {
-        alert("trumpet sound")
-    }
+  location.replace('/makereservation')
 })
 
+var reservationSection =document.querySelector("#reservation-form")
+var reservationProfile = document.querySelector("#restaurant-profile")
+var cancleBtn = document.querySelector("#cancle-reservation")
+document.querySelector("#cancle-reservation").addEventListener("click",e=>{
+  e.preventDefault();
+  reservationSection.remove()
+  var cancleMsg = document.createElement("p")
+  cancleMsg.textContent = "Your reservation at Restaurant Name has been cancled successfully"
+  reservationProfile.append(cancleMsg)
+  cancleBtn.remove()
 })
 
 
@@ -33,14 +26,4 @@ fetch("/seereservation",{
 
 
 
-
-//* datepicker
-$( function() {
-    $( "#datepicker" ).datepicker();
-  })
-
-//* drop down
-$( function() {
-    $( "#speed" ).selectmenu();
-})
 
