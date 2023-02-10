@@ -6,7 +6,7 @@ document.querySelector("#make-reservation-form").addEventListener("submit",e=>{
     table_capacity:document.querySelector("#party-size").value,
 }
 console.log(customerObj)
-fetch("/makereservation",{
+fetch("/seereservation",{
     method:"POST",
     body:JSON.stringify(customerObj),
     headers:{
@@ -22,7 +22,18 @@ fetch("/makereservation",{
 
 })
 
-//Jquery function
+
+
+
+
+
+
+
+
+
+
+
+
 //* datepicker
 $( function() {
     $( "#datepicker" ).datepicker();

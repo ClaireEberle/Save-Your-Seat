@@ -2,10 +2,10 @@ const Customer = require("./Customer");
 const Reseravation = require("./Reservation");
 const Owner = require("./Owner");
 
-Owner.hasmany(Reseravation)
+Owner.hasMany(Reseravation)
 
 // This was from refencing excaliber
-Customer.hasmany(Reseravation)
+Customer.hasMany(Reseravation)
 
 // Zoom recording Tuesday February 7 2023
 // Sequelize associations
