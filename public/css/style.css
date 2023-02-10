@@ -10,6 +10,14 @@
     font-family: sans-serif;
 }
 
+header{
+    font-family: 'Dancing Script', cursive;
+    font-size:500%;
+    border-bottom:3px solid var(--redbtn-background-color);
+    text-align: center;
+    padding:2%;
+}
+
 #userview-1-choice{
     display: flex;
     border:1px solid black;
@@ -21,4 +29,62 @@
     margin-right:5px;
     color:var(--whitefont-color);
     border:1px solid yellow;
+}
+
+#make-reservation-form{
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 5%;
+    line-height: 3em;
+    padding:2em;
+    height:max-content;
+    bod
+}
+/* CSS */
+#findtime {
+    margin-top: 2em;
+  background:var(--redbtn-background-color);
+  border: 1px solid var(--redbtn-background-color);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+#findtime:hover,
+#findtime:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: var(--redbtn-background-color)
+}
+
+#findtime:active {
+  opacity: .5;
+}
+
+#make-reservation-form:hover {
+  border-color: #dadce0;
+  box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+  color: #202124;
 }

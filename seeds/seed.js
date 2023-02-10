@@ -2,7 +2,7 @@
 // seed data
 
 const sequelize = require("../config/connection")
-const {Customer, Reservation, Table} = require("../models")
+const {Customer, Reservation, Owner} = require("../models")
 
 const seed = async ()=>{
     await sequelize.sync({ force: true});
@@ -28,7 +28,7 @@ const seed = async ()=>{
             validate: true
         });
 
-    const table = await Table.bulkCreate([
+    const owner = await Owner.bulkCreate([
         {
             table_number: 0
         },
