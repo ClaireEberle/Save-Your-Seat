@@ -20,10 +20,11 @@ Reservation.init({
         type:DataTypes.TIME,
         allowNull:false,
     },
+    //CONSIDER MOVE party_size TO CUSTOMER TABLE
     party_size:{
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
+    },
     customer_id: {
         type: DataTypes.INTEGER,
         references: {
