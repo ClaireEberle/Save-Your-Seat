@@ -6,7 +6,7 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         password:document.querySelector("#custSignupPassword").value
     }
     //TODO:Change for Sign-up
-    fetch("/api/user",{
+    fetch("/api/user/",{
         method:"POST",
         body:JSON.stringify(signupObj),
         headers:{
@@ -16,7 +16,7 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         if(res.ok){
             location.href="/customers"
         }else{
-            alert("wrong email or password")
+            alert("sign-up failed")
         }
     })
 
