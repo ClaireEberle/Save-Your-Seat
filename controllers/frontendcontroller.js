@@ -23,6 +23,10 @@ router.post("/makereservation", (req, res) => {
 })
   });
 
+  router.get("/makereservation/confirmed",(req,res) =>{
+    res.render("userview3");
+})
+
 router.get("/seereservation",(req,res) =>{
     res.render("userview2-2");
 })
