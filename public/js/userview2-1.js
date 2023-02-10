@@ -7,20 +7,21 @@ document.querySelector("#make-reservation-form").addEventListener("submit",e=>{
 }
 console.log(customerObj)
 fetch("/makereservation",{
-    method:"POST",
-    body:JSON.stringify(customerObj),
+    method:"GET",
     headers:{
         "Content-Type":"application/json"
     }
 }).then(res=>{
     if(res.ok){
-       console.log("hello")
+       console.log(res)
     } else {
         alert("trumpet sound")
     }
 })
 
 })
+
+
 
 //Jquery function
 //* datepicker
