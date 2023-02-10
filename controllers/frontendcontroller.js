@@ -24,7 +24,7 @@ router.post("/makereservation", (req, res) => {
   });
 
   router.get("/makereservation/confirmed",(req,res) =>{
-    res.render("userview3");
+    res.render("userview3",req.session.email);
 })
 
 router.get("/seereservation",(req,res) =>{
