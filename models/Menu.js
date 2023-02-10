@@ -9,3 +9,5 @@ class Menu extends Model {}
 Menu.init({
     // TODO
 })
+
+module.exports=Menu

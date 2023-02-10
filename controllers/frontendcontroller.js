@@ -7,6 +7,10 @@ router.get("/makereservation",(req,res)=>{
     res.render("userview2-1")
     })
 
+router.get("/",(req,res)=>{
+    res.render("restaurantLogin")
+    })
+    
 router.get("/customers",(req,res)=>{
         res.render("userview1")
         })
