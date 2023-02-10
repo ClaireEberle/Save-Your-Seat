@@ -1,20 +1,18 @@
 const Customer = require("./Customer");
-const Reseravation = require("./Reservation");
+const Reservation = require("./Reservation");
 const Owner = require("./Owner");
 
-Owner.hasmany(Reseravation)
+// Owner.hasMany(Reservation)
+// Reservation.belongsTo(Owner)
 
-// This was from refencing excaliber
-Customer.hasmany(Reseravation)
-
-// Zoom recording Tuesday February 7 2023
-// Sequelize associations
-// Basketball API
-Reseravation.belongsTo(Customer)
-Reseravation.belongsTo(Owner)
+Customer.hasMany(Reservation)
+Reservation.belongsTo(Customer, {
+    foreignKey: 'customer_id',
+    onDelete:"CASCADE"
+})
 
 module.exports = {
     Customer,
-    Reseravation,
+    Reservation,
     Owner
 }
