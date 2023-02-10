@@ -22,23 +22,24 @@ const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(allRoutes);
 
 const sess = {
   secret: process.env.SESSION_SECRET,
   cookie: {
-      maxAge:1000*60*60*2
+    maxAge:1000*60*60*2
   },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-      db: sequelize
+    db: sequelize
   })
 };
 
 app.use(session(sess));
 // Static directory
 app.use(express.static('public'));
+
+app.use(allRoutes);
 app.get("/sessions",(req,res)=>{
   res.json(req.session)
 })
