@@ -1,20 +1,34 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const bcrypt = require("bcrypt")
+
 
 class Owner extends Model {}
 
 Owner.init({
-    // TODO
-    // next priorty
-    table_number: {
+    id:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
+    open_time:{
+        type: DataTypes.DATE,
+        allowNull:false,
+    },
+    close_time: {
+        type: DataTypes.DATE,
+        allowNull:false,
+    },
+    table_capacity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
-
-
 }, {
-    sequelize
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'owner',
 })
 
 module.exports=Owner

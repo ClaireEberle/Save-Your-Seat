@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {Customer, Reservation} = require('../models');
+const {Customer, Reservation,Owner} = require('../models');
 
 router.get("/",(req,res)=>{
     Reservation.findAll({include:[{model:Customer, as: 'customer'}]}).then(reservationData=>{
