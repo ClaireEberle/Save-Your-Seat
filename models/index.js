@@ -1,15 +1,18 @@
 const Customer = require("./Customer");
-const Reseravation = require("./Reservation");
+const Reservation = require("./Reservation");
 const Owner = require("./Owner");
 
-Owner.hasmany(Reseravation)
-Reseravation.hasmany(Customer)
+// Owner.hasMany(Reservation)
+// Reservation.belongsTo(Owner)
 
-Reseravation.belongsTo(Customer)
-Customer.belongsTo(Owner)
+Customer.hasMany(Reservation)
+Reservation.belongsTo(Customer, {
+    foreignKey: 'customer_id',
+    onDelete:"CASCADE"
+})
 
 module.exports = {
     Customer,
-    Reseravation,
-    Table
+    Reservation,
+    Owner
 }
