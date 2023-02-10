@@ -11,24 +11,29 @@ Reservation.init({
         primaryKey: true,
         autoIncrement: true
       },
-    time_slot:{
-        type: DataTypes.STRING,
+    reservation_date:{
+        type: DataTypes.DATE,
         allowNull:false,
-        validate: {
-            isIn: [['breakfast', 'lunch', 'dinner']]
-        }
     },
-    day:{
-        type:DataTypes.STRING,
+    reservation_time:{
+        type:DataTypes.TIME,
         allowNull:false,
-        validate: {
-            isIn: [['monday', 'tuesday', 'wednesday','thrusday','friday','saturday','sunday']]
-        }
     },
+    party_size:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     customer_id: {
         type: DataTypes.INTEGER,
         references: {
           model:'customer',
+          key: 'id',
+        }
+    },
+    owner_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model:'owner',
           key: 'id',
         }
     }

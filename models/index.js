@@ -2,8 +2,11 @@ const Customer = require("./Customer");
 const Reservation = require("./Reservation");
 const Owner = require("./Owner");
 
-// Owner.hasMany(Reservation)
-// Reservation.belongsTo(Owner)
+Owner.hasMany(Reservation)
+Reservation.belongsTo(Owner, {
+    foreignKey: 'owner_id',
+    onDelete:"CASCADE"
+})
 
 Customer.hasMany(Reservation)
 Reservation.belongsTo(Customer, {
