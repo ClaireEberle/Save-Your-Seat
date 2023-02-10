@@ -10,7 +10,7 @@ document.querySelector("#cancle-reservation").addEventListener("click",e=>{
   e.preventDefault();
   reservationSection.remove()
   var cancleMsg = document.createElement("p")
-  cancleMsg.textContent = "Your reservation at Restaurant Name has been cancled successfully"
+  cancleMsg.textContent = "Your reservation at Restaurant Name has been cancled successfully."
   reservationProfile.append(cancleMsg)
   cancleBtn.remove()
 })
