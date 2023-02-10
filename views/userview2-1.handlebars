@@ -1,4 +1,4 @@
-<form id="make-reservation-form">
+<form class="userview-form" id="make-reservation-form">
   <h2>Make a reservation</h2>
   <label for="party-size">Party Size</label>
   <select name="party-size" id="party-size">
@@ -11,11 +11,12 @@
   <label for="date">Date:</label>
   <input type="text" id="datepicker" />
   <label for="time">Time:</label>
-  <select name="time" id="time">
-    <option>AM</option>
-    <option selected="selected">PM</option>
+  <select name="time" id="party-time">
+    <option>lunch</option>
+    <option selected="selected">dinner</option>
   </select>
-  <button id="findtime">Find a time</button>
+      {{!-- {{> available-time-details}} --}}
+  <button class="form-btn" id="findtime">Find a time</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
