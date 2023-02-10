@@ -4,6 +4,7 @@ document.querySelector("#custLoginForm").addEventListener("submit",e=>{
         email:document.querySelector("#custLoginEmail").value,
         password:document.querySelector("#custLoginPassword").value
     }
+    location.href="/customers"
    
 })
 
@@ -14,6 +15,6 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         email:document.querySelector("#custSignupEmail").value,
         password:document.querySelector("#custSignupPassword").value
     }
-   
+   location.href="customers"
 })
 

@@ -28,15 +28,23 @@ router.get("/seereservation",(req,res) =>{
 })
 
 router.get("/restaurantLogin", (req, res) => {
-  res.render("restaurantLogin");
+  res.render("view3");
 });
 
 router.get("/", (req, res) => {
-  res.render("home");
+  res.render("view1");
+});
+
+router.get("/newrestaurant", (req, res) => {
+  res.render("view3-1");
+});
+
+router.get("/restaurants", (req, res) => {
+  res.render("view3-2");
 });
 
 router.get("/customerLogin", (req,res)=>{
-  res.render("customerLogin")
+  res.render("view2")
 })
 
 router.get("/customers", (req, res) => {
