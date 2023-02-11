@@ -4,7 +4,7 @@ document.querySelector("#restLoginForm").addEventListener("submit",e=>{
         email:document.querySelector("#restLoginEmail").value,
         password:document.querySelector("#restLoginPassword").value
     }
-    fetch("/api/owner",{ 
+    fetch("/api/owner/login",{ 
         method:"POST",
         body:JSON.stringify(loginObj),
         headers:{
