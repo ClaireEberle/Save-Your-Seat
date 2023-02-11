@@ -12,7 +12,7 @@ const seed = async ()=>{
 
     await seedReservation();
     console.log('\n----- DATABASE Reservation SYNCED -----\n');
-    process.exit(0);
+    // process.exit(0);
 
     await seedOwner();
     console.log('\n----- DATABASE Owner SYNCED -----\n');
