@@ -45,6 +45,11 @@ header{
     height:max-content;
 }
 
+.time-slot{
+  display: flex;
+  justify-content: space-around;
+}
+
 .form-h2{
   border-bottom: 2px solid #dadce0;
 }
