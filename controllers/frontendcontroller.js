@@ -20,9 +20,12 @@ router.get("/seereservation", (req, res) => {
   if (!req.session.userId) {
     return res.redirect("/customerLogin");
   }
-  User.findByPk(req.session.userId, {
+  Customer.findByPk(req.session.userId, {
     include: [Reservation],
   }).then((userdata) => {
+    if(!Customer.Reservation){
+      return res.json(userdata)
+    }
     console.log(userdata);
     const hbsData = userdata.toJSON();
     console.log("==============================");

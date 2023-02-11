@@ -5,6 +5,7 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         email:document.querySelector("#custSignupEmail").value,
         password:document.querySelector("#custSignupPassword").value
     }
+    console.log(loginObj)
     //TODO:Change for Sign-up
     fetch("/api/user/signup",{
         method:"POST",
