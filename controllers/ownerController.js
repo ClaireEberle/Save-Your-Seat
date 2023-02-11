@@ -27,8 +27,8 @@ router.get("/",(req,res)=>{
  router.post("/",(req,res)=>{
    Owner.create(req.body
    ).then(ownerData=>{
-   req.session.ownerId = ownerData.id;
-    req.session.ownerEmail = ownerData.email;
+  
+    req.session.ownerEmail = req.body.email;
     res.json(ownerData)
    }).catch(err=>{
     console.log(err);

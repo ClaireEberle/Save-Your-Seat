@@ -47,7 +47,7 @@ router.get("/newrestaurant", (req, res) => {
 });
 
 router.get("/restaurants", (req, res) => {
- Owner.findAll().then(ownerData=>{
+ Owner.findAll().then(ownerData=>{ //
    console.log(ownerData)
    res.render("view3-2");
   })
