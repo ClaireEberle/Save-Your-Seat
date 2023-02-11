@@ -1,11 +1,21 @@
-<h1>Welcome (Restaurant Name) !</h1>
+<h1>Create a restaurant profile by filling out the form below:</h1>
 
 <div class="userview-form">
-    <button class="form-btn" type="button" id="createTableBtn">Create Restaurant Tables</button>
+    <form id="restSignupForm">
+    <input type="text" id="restSignupName" placeholder="Name of Restaurant">
+    <input type="text" id="restSignupEmail" placeholder="email">
+     <input type="Password" id="restSignupPassword" placeholder="new password">
+     <label for="maxtable">How many tables does your restaurant have?</label>
+     <input type="number" id="maxtable" placeholder="enter a number">
+     <label for="opentime">what time do you open?</label>
+     <input type="time" id="opentime" placeholder="what time do you open?">
+     <label for="closetime">What time do you close?</label>
+     <input type="time" id="closetime" placeholder="what time do you close?">
+     <div>
+    <button class="form-btn">Sign up!</button>
+</div>
+</form>
 </div>
 
-<div class="userview-form">
-    <button class="form-btn" type="button" id="createMenuBtn">Create Restaurant Menu</button>
-</div>
 
 <script src="/js/view3-1.js"></script>
