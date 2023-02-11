@@ -30,6 +30,7 @@ router.get("/",(req,res)=>{
     email:req.body.email,
     password:req.body.password
    }).then(userData=>{
+      console.log(userData)
     req.session.userId = userData.id;
     req.session.userEmail = userData.email;
     res.json(userData)
