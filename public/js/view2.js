@@ -27,7 +27,7 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         name:document.querySelector("#custSignupName").value,
         email:document.querySelector("#custSignupEmail").value,
         password:document.querySelector("#custSignupPassword").value
-    }
+    })
     //TODO:Change for Sign-up
 //     fetch("/api/user",{
 //         method:"POST",
