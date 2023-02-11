@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {Customer, Reservation} = require('../models');
+const {Owner, Reservation} = require('../models');
 const bcrypt = require("bcrypt");
 
 router.get("/",(req,res)=>{
-    Customer.findAll().then(userData=>{
+    Owner.findAll().then(ownerData=>{
       //{include:[{model:Reservation, as: 'reservation'}]}
-     res.json(userData)
+     res.json(ownerData)
     }).catch(err=>{
      console.log(err);
      res.status(500).json({msg:err})
@@ -14,10 +14,10 @@ router.get("/",(req,res)=>{
  })
 
  router.get("/:id",(req,res)=>{
-   Customer.findByPk(req.params.id,{
+   Owner.findByPk(req.params.id,{
    //{include:[{model:Reservation, as: 'reservation'}]}
-   }).then(userData=>{
-    res.json(userData)
+   }).then(ownerData=>{
+    res.json(ownerData)
    }).catch(err=>{
     console.log(err);
     res.status(404).json({msg:err})
@@ -25,31 +25,31 @@ router.get("/",(req,res)=>{
 })
 
  router.post("/",(req,res)=>{
-    console.log(req.body);
-   Customer.create(req.body).then(userData=>{
-    req.session.userId = userData.id;
-    req.session.userEmail = userData.email;
-    res.json(userData)
+   Owner.create(
+    req.body
+   ).then(ownerData=>{
+
+    req.session.ownerEmail = req.body.email;
+    res.json(ownerData)
    }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:err})
    })
 })
 
-
 router.post("/login",(req,res)=>{
-   Customer.findOne({
+   Owner.findOne({
       where:{
          email: req.body.email
       }
-   }).then(userData =>{
-      if(!userData){
+   }).then(ownerData =>{
+      if(!ownerData){
          return res.status(401).json({msg:"incorrect email or password"})
       } else {
-         if(bcrypt.compareSync(req.body.password,userData.password)){
-         req.session.userId = userData.id;
-         req.session.userEmail = userData.email;
-         return res.json(userData)
+         if(bcrypt.compareSync(req.body.password,ownerData.password)){
+         req.session.ownerId = ownerData.id;
+         req.session.ownerEmail = ownerData.email;
+         return res.json(ownerData)
          } else {
             return res.status(401).json({msg:"incorrect email or password"})
          }

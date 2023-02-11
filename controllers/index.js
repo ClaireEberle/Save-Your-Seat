@@ -7,6 +7,9 @@ router.use("/",frontEndRoutes);
 const customerRoutes = require('./customerController');
 router.use("/api/user",customerRoutes);
 
+const ownerRoutes = require('./ownerController');
+router.use("/api/owner",ownerRoutes);
+
 const reservationRoutes = require('./reservationController');
 router.use("/api/reservation",reservationRoutes);
 
