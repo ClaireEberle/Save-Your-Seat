@@ -12,6 +12,10 @@ Owner.init({
         primaryKey: true,
         autoIncrement: true
       },
+    restaurant_name: {
+        type: DataTypes.STRING,
+        allowNull:false
+    },
     open_time:{
         type: DataTypes.TIME,
         allowNull:false,
