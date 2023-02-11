@@ -28,7 +28,7 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         email:document.querySelector("#custSignupEmail").value,
         password:document.querySelector("#custSignupPassword").value
     }
-    //TODO:Change for Sign-up
+   
     fetch("/api/user/",{
         method:"POST",
         body:JSON.stringify(signupObj),
@@ -39,7 +39,7 @@ document.querySelector("#custSignupForm").addEventListener("submit",e=>{
         if(res.ok){
             location.href="/customers"
         }else{
-            alert("wrong email or password")
+            alert("invalid email/passoword")
         }
     })
 

@@ -7,7 +7,19 @@ document.querySelector("#restSignupForm").addEventListener("submit",e=>{
         open_time:document.querySelector("#opentime").value,
         close_time:document.querySelector("#closetime").value
     }
-    console.log(restSignupObj);
-    alert("Welcome! Now you may sign-in");
-   location.href="/restaurantLogin";
+    fetch("/api/owner",{ 
+        method:"POST",
+        body:JSON.stringify(restSignupObj),
+        headers:{
+            "content-Type":"application/json"
+        }
+    }).then(res=>{
+        if(res.ok){
+            alert("Welcome! Now you may sign-in");
+            location.href="/restaurantLogin"
+        }else{
+            alert("wrong email or password")
+        }
+    })
+    
 })
