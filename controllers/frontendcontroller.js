@@ -2,36 +2,15 @@ const express = require("express");
 const router = express.Router();
 const { Owner, Customer, Reservation } = require("../models");
 
-router.get("/makereservation", (req, res) => {
-  Owner.findByPk(1)
-    .then((ownerData) => {
-      res.json(ownerData);
-      res.render("userview2-1");
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: "oh noes!", err });
-    });
-});
 
 router.get("/makereservation", (req, res) => {
   res.render("userview2-1");
 });
 
 router.post("/makereservation", (req, res) => {
-  Owner.find({
-    where: {
-      available_date: req.body.available_date,
-      available_meal: req.body.available_meal,
-      table_capacity: req.body.table_capacity,
-    },
-  }).then((data) => {
-    console.log(data);
-    const availableData = data.map((available_time) => available_time.toJSON());
-    console.log(availableData);
-    res.render("", {
-      availableData,
-    });
+  Owner.findByPk(req.body.id
+  ).then((data) => {
+    res.json(data)
   });
 });
 
