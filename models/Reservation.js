@@ -5,12 +5,6 @@ const sequelize = require('../config/connection');
 class Reservation extends Model {}
 
 Reservation.init({
-    id:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-      },
     reservation_date:{
         type: DataTypes.DATEONLY,
         defaultValue: DataTypes.NOW,
@@ -26,27 +20,9 @@ Reservation.init({
         type: DataTypes.INTEGER,
         defaultValue: 0,
         allowNull: false,
-    },
-    customer_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model:'customer',
-          key: 'id',
-        }
-    },
-    owner_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model:'owner',
-          key: 'id',
-        }
     }
 },{
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'reservation',
+    sequelize
 });
 
 module.exports= Reservation;

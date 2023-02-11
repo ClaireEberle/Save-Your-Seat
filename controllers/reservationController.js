@@ -3,7 +3,7 @@ const router = express.Router();
 const {Customer, Reservation,Owner} = require('../models');
 
 router.get("/",(req,res)=>{
-    Reservation.findAll({include:[{model:Customer, as: 'customer'}]}).then(reservationData=>{
+    Reservation.findAll({include:[Customer,Owner]}).then(reservationData=>{
      res.json(reservationData)
     }).catch(err=>{
      console.log(err);
@@ -12,7 +12,7 @@ router.get("/",(req,res)=>{
  })
 
  router.get("/:id",(req,res)=>{
-   Reservation.findByPk(req.params.id,{include:[{model:Customer, as: 'customer'}]}).then(reservationData=>{
+   Reservation.findByPk(req.params.id,{include:[Customer,Owner]}).then(reservationData=>{
     res.json(reservationData)
    }).catch(err=>{
     console.log(err);
@@ -27,13 +27,9 @@ router.get("/",(req,res)=>{
    // if(!req.session.userId){
    //    return res.status(403).json({msg:"login first post"})
    // }
-    Reservation.create({
-    reservation_date:req.body.reservation_date,
-    reservation_time:req.body.reservation_time,
-    party_size:req.body.party_size,
-    customer_id:req.body.customer_id,
-    owner_id:req.body.owner_id
-   }).then(reservationData=>{
+    Reservation.create(
+    req.body
+   ).then(reservationData=>{
     res.json(reservationData)
    }).catch(err=>{
     console.log(err);
