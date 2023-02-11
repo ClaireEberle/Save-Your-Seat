@@ -3,16 +3,12 @@ const Reservation = require("./Reservation");
 const Owner = require("./Owner");
 
 Owner.hasMany(Reservation)
-Reservation.belongsTo(Owner, {
-    foreignKey: 'owner_id',
-    onDelete:"CASCADE"
-})
+Reservation.belongsTo(Owner)
+//reference key: OwnerID
 
 Customer.hasMany(Reservation)
-Reservation.belongsTo(Customer, {
-    foreignKey: 'customer_id',
-    onDelete:"CASCADE"
-})
+Reservation.belongsTo(Customer)
+//reference key: CustomerID
 
 module.exports = {
     Customer,

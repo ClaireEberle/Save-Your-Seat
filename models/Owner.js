@@ -6,12 +6,6 @@ const bcrypt = require("bcrypt")
 class Owner extends Model {}
 
 Owner.init({
-    id:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-      },
     restaurant_name: {
         type: DataTypes.STRING,
         allowNull:false
@@ -45,10 +39,6 @@ Owner.init({
     }
 }, {
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'owner',
     hooks:{
         beforeCreate:userObj=>{
             userObj.password = bcrypt.hashSync(userObj.password,4);
