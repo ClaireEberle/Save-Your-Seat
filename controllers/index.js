@@ -1,16 +1,16 @@
-import { Router } from 'express';
-const router = Router();
+const express = require('express');
+const router = express.Router();
 
-import frontEndRoutes from './frontEndController';
+const frontEndRoutes = require('./frontEndController');
 router.use("/",frontEndRoutes);
 
-import customerRoutes from './customerController';
+const customerRoutes = require('./customerController');
 router.use("/api/user",customerRoutes);
 
-import ownerRoutes from './ownerController';
+const ownerRoutes = require('./ownerController');
 router.use("/api/owner",ownerRoutes);
 
-import reservationRoutes from './reservationController';
+const reservationRoutes = require('./reservationController');
 router.use("/api/reservation",reservationRoutes);
 
-export default router;
+module.exports = router;
