@@ -47,7 +47,10 @@ router.get("/newrestaurant", (req, res) => {
 });
 
 router.get("/restaurants", (req, res) => {
-  res.render("view3-2");
+ Owner.findAll().then(ownerData=>{ //
+   console.log(ownerData)
+   res.render("view3-2");
+  })
 });
 
 router.get("/customerLogin", (req, res) => {

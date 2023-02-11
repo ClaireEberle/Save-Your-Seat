@@ -109,27 +109,6 @@ flex-wrap:wrap;
   touch-action: manipulation;
   vertical-align: middle;
 }
-.main-view {
-  border: 3px solid #fff;
-  padding: 20px;
-}
-.main-children{
-  /* width: 50%;
-  float: left;
-  padding: 20px;  */
-
-  background-color: #f8f9fa;
-  border: 1px solid #f8f9fa;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 5%;
-  line-height: 3em;
-  padding:2em;
-  height:max-content;
-}
 
 .form-btn:hover,
 .form-btn:active {
