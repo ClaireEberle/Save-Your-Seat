@@ -18,6 +18,15 @@ header{
     padding:2%;
 }
 
+.nav-bar{
+  text-align: left;
+  font-size: 18%;
+}
+
+.nav-bar-a{
+  padding-right: 10px;
+}
+
 #userview-1-choice{
     display: flex;
     border:1px solid black;
@@ -122,12 +131,12 @@ flex-wrap:wrap;
   height:max-content;
 }
 
-/* .form-btn:hover,
+.form-btn:hover,
 .form-btn:active {
   background-color: initial;
   background-position: 0 0;
   color: var(--redbtn-background-color)
-} */
+}
 
 .form-btn:active {
   opacity: .5;
