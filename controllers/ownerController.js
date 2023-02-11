@@ -25,8 +25,13 @@ router.get("/",(req,res)=>{
 })
 
  router.post("/",(req,res)=>{
-   Owner.create(
-    req.body
+   Owner.create({
+      open_time:req.body.open_time,
+      close_time:req.body.close_time,
+      table_capacity:req.body.table_capacity,
+      email:req.body.email,
+      password:req.body.password
+   }
    ).then(ownerData=>{
 
     req.session.ownerEmail = req.body.email;
