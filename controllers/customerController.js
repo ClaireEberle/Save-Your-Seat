@@ -24,7 +24,8 @@ router.get("/",(req,res)=>{
    })
 })
 
- router.post("/",(req,res)=>{
+ router.post("/signup",(req,res)=>{
+    console.log(req.body);
    Customer.create(req.body).then(userData=>{
     req.session.userId = userData.id;
     req.session.userEmail = userData.email;
