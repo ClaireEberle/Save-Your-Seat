@@ -2,12 +2,12 @@ const {Customer} = require('../models');
 
 const customerData = [
     {
-        //name: "joe",
+        name: "joe",
         email: "test@gmail.com",
         password: "joejoejoe"
     },
     {
-        //name: "hieu",
+        name: "hieu",
         email: "hieu12@gmail.com",
         password: "hieuhieuhieu"
     }
