@@ -51,6 +51,10 @@ router.get("/customerLogin", (req, res) => {
   res.render("view2");
 });
 
+router.get("/customerSignup", (req, res) => {
+  res.render("view2-1");
+});
+
 router.get("/customers", (req, res) => {
   res.render("userview1");
 });
