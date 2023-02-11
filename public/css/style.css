@@ -47,6 +47,7 @@ header{
 
 .time-slot{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
@@ -100,12 +101,12 @@ flex-wrap:wrap;
   vertical-align: middle;
 }
 
-.form-btn:hover,
+/* .form-btn:hover,
 .form-btn:active {
   background-color: initial;
   background-position: 0 0;
   color: var(--redbtn-background-color)
-}
+} */
 
 .form-btn:active {
   opacity: .5;

@@ -10,12 +10,13 @@ const seed = async ()=>{
     await seedCustomer();
     console.log('\n----- DATABASE Customer SYNCED -----\n');
 
-    await seedReservation();
-    console.log('\n----- DATABASE Reservation SYNCED -----\n');
-    // process.exit(0);
-
     await seedOwner();
     console.log('\n----- DATABASE Owner SYNCED -----\n');
+
+    await seedReservation();
+    console.log('\n----- DATABASE Reservation SYNCED -----\n');
+
+
     process.exit(0);
 }
 
