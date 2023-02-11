@@ -1,13 +1,15 @@
-const {Reseravation} = require('../models');
+const {Reservation} = require('../models');
 
 const reservationData = [
     {
-        time_slots: "dinner",
-        day: "friday",
-        customer_id: 1
+        reservation_date: "2025-02-10",
+        reservation_time: "15:00",
+        party_size: 2,
+        CustomerId: 1,
+        OwnerId: 1
     },
 ];
 
-const seedReservation = () => Reseravation.bulkCreate(reservationData);
+const seedReservation = () => Reservation.bulkCreate(reservationData);
 
 module.exports = seedReservation;
