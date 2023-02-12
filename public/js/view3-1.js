@@ -1,7 +1,7 @@
 document.querySelector("#restSignupForm").addEventListener("submit",e=>{
     e.preventDefault();
     const restSignupObj = {
-        name:document.querySelector("#restSignupName").value,
+        restaurant_name:document.querySelector("#restSignupName").value,
         open_time:document.querySelector("#opentime").value,
         close_time:document.querySelector("#closetime").value,
         table_capacity:document.querySelector("#maxtable").value,
