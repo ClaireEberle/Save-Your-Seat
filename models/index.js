@@ -8,19 +8,16 @@ Owner.hasMany(Reservation)
 Reservation.belongsTo(Owner)
 //reference key: OwnerID
 
+Owner.hasOne(Menu)
+Menu.belongsTo(Owner)
+
+Dish.belongsTo(Menu)
+
 Customer.hasMany(Reservation)
 Reservation.belongsTo(Customer)
 //reference key: CustomerID
 
-Menu.belongsTo(Owner, {
-    foreignKey: 'owner_id',
-    onDelete:"CASCADE"
-})
 
-Dish.belongsTo(Menu, {
-    foreignKey: 'menu_id',
-    onDelete:"CASCADE"
-})
 
 module.exports = {
     Customer,

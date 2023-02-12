@@ -12,17 +12,24 @@ Dish.init({
     side :{
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    MenuId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 }, {
     sequelize,
-    hooks:{
-        beforeCreate:userObj=>{
-            userObj.password = bcrypt.hashSync(userObj.password,4);
-            return userObj;
-        }
-    }
 }
 
 )
 
 module.exports=Dish
+
+// user_id: {
+//     type: DataTypes.INTEGER,
+//     references: {
+//       model: 'user',
+//       key: 'id',
+//     },
+//   },
