@@ -20,8 +20,4 @@ document.querySelector("#restLoginForm").addEventListener("submit",e=>{
   
 })
 
-document.querySelector("#restsignupBtn").addEventListener("click",e=>{
-    e.preventDefault();
-   location.href="/newrestaurant";
-})
 

@@ -26,6 +26,9 @@ header{
 .nav-bar-a{
   padding-right: 10px;
 }
+.nav-bar-b{
+  float:right;
+}
 
 #userview-1-choice{
     display: flex;
