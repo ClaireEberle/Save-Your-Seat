@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 router.get("/",(req,res)=>{
     Owner.findAll().then(ownerData=>{
-      //{include:[{model:Reservation, as: 'reservation'}]}
+      // {include:[{model:Reservation, as: 'reservation'}]}
      res.json(ownerData)
     }).catch(err=>{
      console.log(err);
