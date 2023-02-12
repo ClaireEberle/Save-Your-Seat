@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Owner, Customer, Reservation, Menu } = require("../models");
+const { Owner, Customer, Reservation, Menu, Dish } = require("../models");
 
 router.get("/makereservation", (req, res) => {
   Owner.findAll().then(ownerData=>{
@@ -91,13 +91,17 @@ router.get("/updateMenu", (req,res)=>{
     return res.redirect("/restaurantLogin")
   }
   Owner.findByPk(req.session.ownerId, {
-    include: [Menu],
+    include: [Menu]
   }).then((ownerData)=>{
     if(!Owner.Menu){
       return res.json(ownerData)
     }
-    const hbsData = ownerData.toJSON();
-    res.render("view3-2-2", hbsData);
+  
+    const hbsOwner = ownerData.map(owner=>owner.toJSON());
+    console.log(hbsOwner)
+    res.render("view3-2-2", {
+      allDishes:hbsOwner
+    });
   })
 });
 
@@ -112,5 +116,7 @@ router.get("/updateTables", (req,res)=>{
    res.render("view3-2-3", hbsData)
   })
 })
+
+
 
 module.exports = router;

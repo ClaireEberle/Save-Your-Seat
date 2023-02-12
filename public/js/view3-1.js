@@ -18,8 +18,8 @@ document.querySelector("#restSignupForm").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-            alert("Welcome! Now you may sign-in");
-            location.href="/restaurantLogin"
+            alert("Welcome! You have created a profile");
+            location.href="/restaurants"
         }else{
             console.log(restSignupObj);
             alert("wrong email or password")

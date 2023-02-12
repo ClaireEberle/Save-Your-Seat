@@ -1,9 +1,24 @@
 <main class="userview-form">
 
 <h1>Menu</h1>
-<div>
+<table>
+    <tr>
+        <th>Main Dish</th>
+        <th>Side</th>
+        <th>Edit</th>
+    </tr>
+    <tr>
     {{#each menu}}
-    <li value="{{dishes.id}}">{{dishes}}, {{side}}</li>
-</div>
+    <td>{{dishes}}</td>
+    <td>{{side}}</td>
+    <td><button id="show-edit-form">edit</button></td>
+    </tr>
+    <form class="hide" id="edit-menu">
+        <input type="text" id="editDish" value="{{menu.dishes}}"/>
+        <input type="text" id="editSide" value="{{menu.sides}}"/>
+        <button>Save Changegs</button>
+        
+    </form>
+</table>
 </main>
 <script src="/js/view3-2-2.js"></script>
