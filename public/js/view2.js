@@ -21,5 +21,3 @@ document.querySelector("#custLoginForm").addEventListener("submit",e=>{
    
 })
 
-
-})
