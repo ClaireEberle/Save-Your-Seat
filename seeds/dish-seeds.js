@@ -5,29 +5,36 @@ const {Dish} = require('../models');
 const dishData = [
     {
         dishes: "apples",
-        side: "caramel"
+        side: "caramel",
+        MenuId: 1
     },
     {
         dishes: "pears",
-        side: "honey"
+        side: "honey",
+        MenuId: 1
     },
     {
         dishes: "oranges",
-        side: "basil"
+        side: "basil",
+        MenuId: 1
     },
     {
         dishes: "mangos",
-        side: "cilantro"
+        side: "cilantro",
+        MenuId: 1
     },
     {
         dishes: "bananas",
-        side: "ice cream"
+        side: "ice cream",
+        MenuId: 1
     },
     {
         dishes: "kiwi",
-        side: "water"
+        side: "water",
+        MenuId: 1
     }
 ];
+
 
 const seedDish = () => Dish.bulkCreate(dishData);
 

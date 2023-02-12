@@ -9,19 +9,24 @@ Menu.init({
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
+    //   ,
+    //   OwnerId: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     defaultValue: 1
+    //   }
 }, {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName:'Menu',
-    hooks:{
-        beforeCreate:userObj=>{
-            userObj.password = bcrypt.hashSync(userObj.password,4);
-            return userObj;
-        }
-    }
+    sequelize
+    // ,
+    // timestamps: false,
+    // freezeTableName: true,
+    // underscored: true,
+    // modelName:'menu'
 })
 
 module.exports=Menu

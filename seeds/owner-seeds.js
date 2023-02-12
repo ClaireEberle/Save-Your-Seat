@@ -8,7 +8,7 @@ const OwnerData = [
         table_capacity: 5,
         email: "owner@gmail.com",
         password: "password"
-    },
+    }
 ];
 
 const seedOwner = () => Owner.bulkCreate(OwnerData);

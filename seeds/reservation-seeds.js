@@ -7,7 +7,7 @@ const reservationData = [
         party_size: 2,
         CustomerId: 1,
         OwnerId: 1
-    },
+    }
 ];
 
 const seedReservation = () => Reservation.bulkCreate(reservationData);
