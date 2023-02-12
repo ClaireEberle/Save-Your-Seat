@@ -6,8 +6,13 @@ const menuData = [
     {
         name: "applebees",
         OwnerId: 1
+    },
+    {
+        name:"lucky's",
+        OwnerId:1
     }
 ];
+
 
 
 const seedMenu = () => Menu.bulkCreate(menuData);

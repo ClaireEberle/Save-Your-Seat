@@ -13,4 +13,10 @@ router.use("/api/owner",ownerRoutes);
 const reservationRoutes = require('./reservationController');
 router.use("/api/reservation",reservationRoutes);
 
+const menuRoutes = require('./menuController');
+router.use("/api/menu",menuRoutes);
+
+const dishRoutes = require('./dishController');
+router.use("/api/dish",dishRoutes);
+
 module.exports = router;
