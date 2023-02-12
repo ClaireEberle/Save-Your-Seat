@@ -4,6 +4,7 @@ const {Customer, Reservation,Owner} = require('../models');
 
 router.get("/",(req,res)=>{
     Reservation.findAll({include:[Customer,Owner]}).then(reservationData=>{
+      
      res.json(reservationData)
     }).catch(err=>{
      console.log(err);
@@ -24,9 +25,9 @@ router.get("/",(req,res)=>{
 // WILL PROTECTED THIS ROUTE LATER
 
  router.post("/",(req,res)=>{
-   // if(!req.session.userId){
-   //    return res.status(403).json({msg:"login first post"})
-   // }
+   if(!req.session.userId){
+      return res.status(403).json({msg:"login first post"})
+   }
     Reservation.create(
     req.body
    ).then(reservationData=>{
