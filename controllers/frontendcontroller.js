@@ -10,11 +10,13 @@ router.get("/makereservation", (req, res) => {
   })
 });
 
-router.post("/makereservation", (req, res) => {
-  Owner.findOne(req.body).then((data) => {
-    res.json(data);
-  });
-});
+// router.post("/makereservation", (req, res) => {
+//   Owner.findOne({where:{restaurant_name:req.body.restaurant_name}})
+//     .then((data) => {
+//     console.log(data)
+//     res.json(data);
+//   });
+// });
 
 router.get("/makereservation/confirmed", (req, res) => {
   Customer.findByPk(req.session.userId).then((customerData)=>{
