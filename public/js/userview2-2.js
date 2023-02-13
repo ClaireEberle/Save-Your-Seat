@@ -1,6 +1,15 @@
-document.querySelector("#edit-reservation").addEventListener("click",e=>{
-  e.preventDefault();
-  location.replace('/makereservation')
+const sendEmail = require("./nodemailer")
+
+document.querySelector("#send-reservation").addEventListener("click",e=>{
+  fetch("/api/reservation/user", {
+    method: "GET",
+    body: JSON.stringify(resvObj),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json()).then((reservationData)=>{
+    sendEmail(reservationData)
+})
 })
 
 var reservationSection =document.querySelector("#reservation-form")
