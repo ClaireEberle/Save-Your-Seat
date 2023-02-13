@@ -29,6 +29,4 @@ function sendEmail(context){
     })
 }
 
-sendEmail("Hello World")
-
 module.exports=sendEmail
