@@ -1,4 +1,4 @@
-const sendEmail = require("./nodemailer")
+// import { sendEmail } from "./nodemailer";
 
 document.querySelector("#send-reservation").addEventListener("click",e=>{
   fetch("/api/reservation/user", {
@@ -15,13 +15,25 @@ document.querySelector("#send-reservation").addEventListener("click",e=>{
 var reservationSection =document.querySelector("#reservation-form")
 var reservationProfile = document.querySelector("#restaurant-profile")
 var cancleBtn = document.querySelector("#cancle-reservation")
-document.querySelector("#cancle-reservation").addEventListener("click",e=>{
+cancleBtn.addEventListener("click",e=>{
   e.preventDefault();
   reservationSection.remove()
   var cancleMsg = document.createElement("p")
-  cancleMsg.textContent = "Your reservation at Restaurant Name has been cancled successfully."
+  cancleMsg.textContent = "Your reservation has been cancled successfully."
   reservationProfile.append(cancleMsg)
   cancleBtn.remove()
+  fetch("/api/reservation", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(res=>{
+    if(res.ok){
+        return
+    }else{
+        alert("wrong email or password")
+    }
+})
 })
 
 

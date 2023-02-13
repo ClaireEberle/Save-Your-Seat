@@ -5,7 +5,7 @@ let makeReservationForm = document.querySelector("#make-reservation-form");
 let pickedTimeDiv = document.querySelector("#picked-time-div");
 var restaurantId ="";
 
-const sendEmail = require("./nodemailer")
+// import { sendEmail } from "./nodemailer";
 
 document.querySelector("#findtime").addEventListener("click", (e) => {
   e.preventDefault();
