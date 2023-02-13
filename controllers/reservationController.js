@@ -32,7 +32,8 @@ router.get("/",(req,res)=>{
     reservation_date:req.body.reservation_date,
     reservation_time:req.body.reservation_time,
     party_size:req.body.party_size,
-    CustomerId:req.session.userId
+    CustomerId:req.session.userId,
+    OwnerId:req.body.OwnerId
     }
    ).then(reservationData=>{
     res.json(reservationData)

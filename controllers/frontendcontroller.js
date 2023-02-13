@@ -28,7 +28,7 @@ router.get("/seereservation", (req, res) => {
    res.redirect("/customerLogin");
   }
   Reservation.findOne({where:{CustomerId:req.session.userId}
-  ,include:[Customer]}).then((userdata) => {
+  ,include:[Owner,Customer]}).then((userdata) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
@@ -36,10 +36,6 @@ router.get("/seereservation", (req, res) => {
     console.log("==============================");
     console.log(hbsData);
     res.render("userview2-2",hbsData);
-  // Customer.findByPk(req.session.userId,{include:[Reservation]}).then((data)=>{
-  //   const hbsData = data.toJSON();
-  //   console.log(hbsData)
-  // })
 })
 })
 
