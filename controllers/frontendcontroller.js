@@ -84,7 +84,7 @@ router.get("/viewReservations", (req,res)=>{
     include: [Reservation],
   }).then((ownerData)=>{
     if(!Owner.Reservation){
-      return res.status(401).json({msg:"You do not have any reservations"})
+      return res.json(ownerData)
     }
       const hbsData = ownerData.toJSON();
       res.render("view3-2-1",hbsData);

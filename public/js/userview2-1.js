@@ -5,6 +5,8 @@ let makeReservationForm = document.querySelector("#make-reservation-form");
 let pickedTimeDiv = document.querySelector("#picked-time-div");
 var restaurantId ="";
 
+const sendEmail = require("./nodemailer")
+
 document.querySelector("#findtime").addEventListener("click", (e) => {
   e.preventDefault();
   let partySize = document.querySelector("#party-size").value;
@@ -80,13 +82,10 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
           headers: {
             "Content-Type": "application/json",
           },
-        }).then((res) => {
-          if (res.ok) {
-            location.href = "/makereservation/confirmed";
-          } else {
-            alert("trumpet sound");
-          }
-        });
+        }).then((res) => res.json()).then((reservationData)=>{
+          sendEmail(reservationData)
+          location.href = "/makereservation/confirmed";
+        })
       });
     });
 });
