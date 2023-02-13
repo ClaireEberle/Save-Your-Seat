@@ -29,4 +29,4 @@ function sendEmail(context){
     })
 }
 
-export {sendEmail}
+module.exports = {sendEmail}

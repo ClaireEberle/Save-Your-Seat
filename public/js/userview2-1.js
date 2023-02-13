@@ -5,7 +5,7 @@ let makeReservationForm = document.querySelector("#make-reservation-form");
 let pickedTimeDiv = document.querySelector("#picked-time-div");
 var restaurantId ="";
 
-// import { sendEmail } from "./nodemailer";
+
 
 document.querySelector("#findtime").addEventListener("click", (e) => {
   e.preventDefault();
@@ -83,6 +83,7 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
             "Content-Type": "application/json",
           },
         }).then((res) => res.json()).then((reservationData)=>{
+
           sendEmail(reservationData)
           location.href = "/makereservation/confirmed";
         })
