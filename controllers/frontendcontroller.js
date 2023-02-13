@@ -3,35 +3,40 @@ const router = express.Router();
 const { Owner, Customer, Reservation, Menu, Dish } = require("../models");
 
 router.get("/makereservation", (req, res) => {
-  res.render("userview2-1");
+  Owner.findAll().then(ownerData=>{
+    const hbsOwner= ownerData.map(owner=>owner.toJSON())
+    console.log(hbsOwner)
+    res.render("userview2-1",{Owner:hbsOwner});
+  })
 });
 
 router.post("/makereservation", (req, res) => {
-  Owner.findByPk(req.body.id).then((data) => {
+  Owner.findOne(req.body).then((data) => {
     res.json(data);
   });
 });
 
 router.get("/makereservation/confirmed", (req, res) => {
-  res.render("userview3", req.session.email);
+  const customerObj = {email:req.session.userEmail}
+  res.render("userview3", customerObj);
 });
 
 router.get("/seereservation", (req, res) => {
   if (!req.session.userId) {
     return res.redirect("/customerLogin");
   }
-  Customer.findByPk(req.session.userId, {
-    include: [Reservation],
-  }).then((userdata) => {
-    if(!Customer.Reservation){
-      return res.json(userdata)
-    }
-    console.log(userdata);
-    const hbsData = userdata.toJSON();
-    console.log("==============================");
-    console.log(hbsData);
-    res.render("userview2-2", hbsData);
-  });
+  // Customer.findByPk(req.session.userId, {
+  //   include: [Reservation],
+  // }).then((userdata) => {
+  //   if(!Customer.Reservation){
+  //     return res.json(userdata)
+  //   }
+  //   console.log(userdata);
+  //   const hbsData = userdata.toJSON();
+  //   console.log("==============================");
+  //   console.log(hbsData);
+    res.render("userview2-2");
+  // });
 });
 
 router.get("/restaurantLogin", (req, res) => {

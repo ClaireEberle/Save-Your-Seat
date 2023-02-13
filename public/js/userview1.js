@@ -16,7 +16,7 @@ document.querySelector("#see-reservation").addEventListener("click",e=>{
             location.href="/seereservation"
         }else{
             noResvAlert = document.createElement("p")
-            noResvAlert.textContent = "Currently you don't have any reservation with us. Please click on the schedule button."
+            noResvAlert.textContent = "Currently you don't have any reservation with us."
             document.querySelector(".userview-form").append(noResvAlert)
         }
     })
