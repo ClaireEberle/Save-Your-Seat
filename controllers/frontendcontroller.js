@@ -17,27 +17,27 @@ router.post("/makereservation", (req, res) => {
 });
 
 router.get("/makereservation/confirmed", (req, res) => {
-  const customerObj = {email:req.session.userEmail}
-  res.render("userview3", customerObj);
+  Customer.findByPk(req.session.userId).then((customerData)=>{
+    const hbsData = customerData.toJSON();
+  res.render("userview3", hbsData);
+})
 });
 
 router.get("/seereservation", (req, res) => {
   if (!req.session.userId) {
-    return res.redirect("/customerLogin");
+   res.redirect("/customerLogin");
   }
-  // Customer.findByPk(req.session.userId, {
-  //   include: [Reservation],
-  // }).then((userdata) => {
-  //   if(!Customer.Reservation){
-  //     return res.json(userdata)
-  //   }
-  //   console.log(userdata);
-  //   const hbsData = userdata.toJSON();
-  //   console.log("==============================");
-  //   console.log(hbsData);
-    res.render("userview2-2");
-  // });
-});
+  Reservation.findOne({where:{CustomerId:req.session.userId}
+  ,include:[Owner,Customer]}).then((userdata) => {
+    // if(!Customer.Reservation){
+    //   res.json(userdata)
+    // }
+    const hbsData = userdata.toJSON();
+    console.log("==============================");
+    console.log(hbsData);
+    res.render("userview2-2",hbsData);
+})
+})
 
 router.get("/restaurantLogin", (req, res) => {
   res.render("view3");
@@ -68,7 +68,10 @@ router.get("/customerSignup", (req, res) => {
 });
 
 router.get("/customers", (req, res) => {
-  res.render("userview1");
+  Customer.findByPk(req.session.userId).then((customerData)=>{
+    const hbsData = customerData.toJSON();
+    res.render("userview1",hbsData);
+  })
 });
 
 router.get("/viewReservations", (req,res)=>{
@@ -82,7 +85,7 @@ router.get("/viewReservations", (req,res)=>{
       return res.status(401).json({msg:"You do not have any reservations"})
     }
       const hbsData = ownerData.toJSON();
-      res.render("view3-2-1", hbsData);
+      res.render("view3-2-1",hbsData);
   })
 });
 

@@ -1,6 +1,6 @@
 document.querySelector("#check-reservation-btn").addEventListener("click",e=>{
   e.preventDefault();
-  location.replace('/seereservation')
+  location.href = '/seereservation'
 })
 
 document.querySelector("#reschedule-btn").addEventListener("click",e=>{

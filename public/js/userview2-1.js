@@ -3,6 +3,7 @@ let today = new Date();
 let alertMsg = document.querySelector("#alertmsg");
 let makeReservationForm = document.querySelector("#make-reservation-form");
 let pickedTimeDiv = document.querySelector("#picked-time-div");
+var restaurantId ="";
 
 document.querySelector("#findtime").addEventListener("click", (e) => {
   e.preventDefault();
@@ -27,10 +28,10 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   }
   makeReservationForm.append(alertMsg);
   // if (document.querySelector("#datepicker").value<today.()) {
-  const customerObj = { restaurant_name: pickedRestaurant };
+  const customerInput = { restaurant_name: pickedRestaurant };
   fetch("/makereservation", {
     method: "POST",
-    body: JSON.stringify(customerObj),
+    body: JSON.stringify(customerInput),
     headers: {
       "Content-Type": "application/json",
     },
@@ -40,6 +41,8 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
       console.log(ownerdata);
       let openTime = parseInt(ownerdata.open_time, 10);
       let closeTime = parseInt(ownerdata.close_time, 10);
+      restaurantId = ownerdata.id
+      console.log(restaurantId)
       for (var i = openTime; i < closeTime; i++) {
         var timeSlotBtn = document.createElement("button");
         timeSlotBtn.textContent = i.toString() + ":00";
@@ -68,8 +71,8 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
           reservation_date: inputDate,
           reservation_time: selectedTime,
           party_size: partySize,
+          OwnerId:restaurantId
         };
-        console.log(resvObj)
         fetch("/api/reservation", {
           method: "POST",
           body: JSON.stringify(resvObj),
