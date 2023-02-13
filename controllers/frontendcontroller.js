@@ -10,13 +10,15 @@ router.get("/makereservation", (req, res) => {
   })
 });
 
-// router.post("/makereservation", (req, res) => {
-//   Owner.findOne({where:{restaurant_name:req.body.restaurant_name}})
-//     .then((data) => {
-//     console.log(data)
-//     res.json(data);
-//   });
-// });
+router.get("/reservation", (req, res) => {
+  if (!req.session.userId) {
+    res.redirect("/customerLogin");
+   }
+  Reservation.findOne({where:{CustomerID:req.session.userId}})
+    .then((data) => {
+    res.json(data);
+  });
+});
 
 router.get("/makereservation/confirmed", (req, res) => {
   Customer.findByPk(req.session.userId).then((customerData)=>{
