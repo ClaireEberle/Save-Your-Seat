@@ -36,6 +36,16 @@ router.get("/",(req,res)=>{
    })
 })
 
+router.post("/search",(req,res)=>{
+   Owner.findOne({where:{restaurant_name:req.body.restaurant_name}}
+   ).then(ownerData=>{
+    res.json(ownerData)
+   }).catch(err=>{
+    console.log(err);
+    res.status(500).json({msg:err})
+   })
+})
+
 router.post("/login",(req,res)=>{
    Owner.findOne({
       where:{

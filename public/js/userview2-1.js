@@ -11,6 +11,7 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   let pickedRestaurant = document.querySelector("#restaurant").value;
   let inputDate = document.querySelector("#datepicker").value;
   let pickedDate = new Date(inputDate);
+  console.log(pickedRestaurant)
   if (alertMsg.textContent) {
     alertMsg.textContent = "";
   }
@@ -29,7 +30,8 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   makeReservationForm.append(alertMsg);
   // if (document.querySelector("#datepicker").value<today.()) {
   const customerInput = { restaurant_name: pickedRestaurant };
-  fetch("/makereservation", {
+  console.log(customerInput)
+  fetch("/api/owner/search", {
     method: "POST",
     body: JSON.stringify(customerInput),
     headers: {
@@ -38,11 +40,10 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   })
     .then((res) => res.json())
     .then((ownerdata) => {
-      console.log(ownerdata);
+      console.log(ownerdata)
       let openTime = parseInt(ownerdata.open_time, 10);
       let closeTime = parseInt(ownerdata.close_time, 10);
       restaurantId = ownerdata.id
-      console.log(restaurantId)
       for (var i = openTime; i < closeTime; i++) {
         var timeSlotBtn = document.createElement("button");
         timeSlotBtn.textContent = i.toString() + ":00";
