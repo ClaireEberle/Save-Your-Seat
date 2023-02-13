@@ -11,7 +11,7 @@
     {{#each Dishes}}
     <td>{{dishes}}</td>
     <td>{{side}}</td>
-    <td><button class="show-edit-form">edit</button></td>
+    <td><button id="show-edit-form">edit</button></td>
     <div class="hide" id="menu-edit">
     <form  id="edit-menu">
         <input type="text" id="editDish" value="{{dishes}}"/>
@@ -23,5 +23,12 @@
     {{/each}}
 </table>
     <button id="add-dish">Add item to menu</button>
+    <div class="hide" id="dish-form-div">
+    <form id="add-dish-form">
+        <input type="text" id="addDish" placeholder="new dish"/>
+        <input type="text" id="addSide" placeholder="new side"/>
+        <button id="save-new-dish">Save New Dish</button>
+    </form>
+    </div>
 </main>
 <script src="/js/view3-2-2.js"></script>
