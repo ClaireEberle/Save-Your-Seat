@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const frontEndRoutes = require('./frontEndController');
+const frontEndRoutes = require('./frontendcontroller');
 router.use("/",frontEndRoutes);
 
 const customerRoutes = require('./customerController');
