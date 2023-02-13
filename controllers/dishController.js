@@ -18,9 +18,9 @@ router.get("/",(req,res)=>{
      Dish.create({
         dishes:req.body.dishes,
         side:req.body.side,
-        OwnerId:req.body.OwnerId
+        OwnerId:req.session.ownerId
      }).then(dishData=>{
-        res.json(dishData)
+        return res.json(dishData)
      }).catch(err=>{
         console.log(err);
         res.status(500).json({msg:err})
