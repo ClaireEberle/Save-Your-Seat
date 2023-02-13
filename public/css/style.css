@@ -86,6 +86,9 @@ flex-wrap:wrap;
   flex-direction: column;
   line-height: 3em;
 }
+.hide {
+  display: none; 
+}
 
 .form-btn {
   margin-top: 2em;
