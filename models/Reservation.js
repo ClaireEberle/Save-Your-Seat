@@ -21,17 +21,17 @@ Reservation.init({
         defaultValue: 0,
         allowNull: false,
     },
-    // time_available
-    time_available: {
-        type: DataTypes.TIME,
-        allowNull: false,
-        defaultValue:'10:00',
-        // sunday morning Feb 10 2023 huddle specification:
-        validate: {
-         isIn:[['10:00', '11:00','12:00','13:00','14:00','15:00',
-         '16:00','17:00','18:00','19:00','20:00','21:00','22:00',
-         '23:00'
-    ]]   
+    // // time_available
+    // time_available: {
+    //     type: DataTypes.TIME,
+    //     allowNull: false,
+    //     defaultValue:'10:00',
+    //     // sunday morning Feb 10 2023 huddle specification:
+    //     validate: {
+    //      isIn:[['10:00', '11:00','12:00','13:00','14:00','15:00',
+    //      '16:00','17:00','18:00','19:00','20:00','21:00','22:00',
+    //      '23:00'
+    // ]]   
         }
     // expanded version:
     //     validate: {
@@ -42,8 +42,9 @@ Reservation.init({
     //      '22:30','23:00','23:30'
     // ]]   
     //     }
-    }
-},{
+    // }
+// },
+,{
     sequelize
 });
 
