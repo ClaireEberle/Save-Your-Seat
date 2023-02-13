@@ -96,17 +96,15 @@ router.get("/updateMenu", (req,res)=>{
     return res.redirect("/restaurantLogin")
   }
   Owner.findByPk(req.session.ownerId, {
-    include: [Menu]
+    include: [Dish]
   }).then((ownerData)=>{
-    if(!Owner.Menu){
-      return res.json(ownerData)
-    }
+    // if(!Owner.Dish){
+    //   return res.json(ownerData)
+    // }
   
-    const hbsOwner = ownerData.map(owner=>owner.toJSON());
-    console.log(hbsOwner)
-    res.render("view3-2-2", {
-      allDishes:hbsOwner
-    });
+    const hbsDish = ownerData.toJSON();
+    console.log(hbsDish)
+    res.render("view3-2-2", hbsDish);
   })
 });
 
