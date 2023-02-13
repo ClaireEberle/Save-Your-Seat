@@ -28,8 +28,12 @@ router.get("/",(req,res)=>{
    if(!req.session.userId){
       return res.status(403).json({msg:"login first post"})
    }
-    Reservation.create(
-    req.body
+    Reservation.create({
+    reservation_date:req.body.reservation_date,
+    reservation_time:req.body.reservation_time,
+    party_size:req.body.party_size,
+    CustomerId:req.session.userId
+    }
    ).then(reservationData=>{
     res.json(reservationData)
    }).catch(err=>{
