@@ -1,6 +1,6 @@
 document.querySelector("#viewresBtn").addEventListener("click",e=>{
     e.preventDefault();
-    fetch("/reservation",{
+    fetch("/api/reservation",{
         method:"GET",
         headers:{
             "content-Type":"application/json"
@@ -9,9 +9,9 @@ document.querySelector("#viewresBtn").addEventListener("click",e=>{
     if (res.ok){
         location.href='/viewReservations'
     }else{
-        noResvAlert = document.createElement("p")
-        noResvAlert.textContent = "No reservations have been scheduled"
-        document.querySelector("#no-res").append(noResvAlert)
+        // noResvAlert = document.createElement("p")
+        // noResvAlert.textContent = "No reservations have been scheduled"
+        document.querySelector("#no-res").classList.remove("hide")
     }
 })
 })
