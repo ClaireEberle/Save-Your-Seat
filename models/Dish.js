@@ -13,11 +13,11 @@ Dish.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    MenuId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 1
-    }
+    // MenuId: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     defaultValue: 1
+    // }
 }, {
     sequelize,
 }

@@ -8,10 +8,10 @@ Owner.hasMany(Reservation)
 Reservation.belongsTo(Owner)
 //reference key: OwnerID
 
-Owner.hasOne(Menu)
 Menu.belongsTo(Owner)
 
-Dish.belongsTo(Menu)
+Owner.hasMany(Dish)
+Dish.belongsTo(Owner)
 
 Customer.hasMany(Reservation)
 Reservation.belongsTo(Customer)
