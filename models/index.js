@@ -1,7 +1,7 @@
 const Customer = require("./Customer");
 const Reservation = require("./Reservation");
 const Owner = require("./Owner");
-const Menu = require("./menu");
+const Menu = require("./Menu");
 const Dish = require("./Dish")
 
 Owner.hasMany(Reservation)
