@@ -4,10 +4,35 @@
 
 <div class="userview-form">
     <button class="form-btn" type="button" id="viewresBtn">View Reservations</button>
+<p id="no-res"></p>
 
     <button class="form-btn  " type="button" id="updateMenuBtn">Update Menu</button>
-
     <button class="form-btn  " type="button" id="updateTablesBtn">Update Tables</button>
+    <form class="userview-form, hide" id="update-table-form">
+  <h2>Update available tables</h2>
+  <h3>Current number of tables: {{table_capacity}} </h3>
+ 
+  <label for="avail-tables">Updated number of tables:</label>
+  <input type="number"  id="avail-tables" placeholder="(ex: 10)">
+   
+
+  <button class="form-btn" id="updateTble">Update available tables</button>
+  <button class="form-btn" id="cancelupdateTble">Cancel</button>
+</form>
+ <button class="form-btn  " type="button" id="updateHourBtn">Update Restaurant Hours</button>
+<form class="userview-form, hide" id="update-hours-form">
+  <h2>Update restaurant business hours</h2>
+  <h3>Current hours: {{open_time}} to {{close_time}} </h3>
+ 
+  <label for="open-time">Updated opening time:</label>
+  <input type="text"  id="open-time" placeholder="(ex: 07:00)"></br>
+  <label for="close-time">Updated opening time:</label>
+  <input type="text"  id="close-time" placeholder="(ex: 23:00)">
+   
+
+  <button class="form-btn" id="updateTime">Update hours</button>
+  <button class="form-btn" id="cancelupdateTime">Cancel</button>
+</form>
 </div>
 
 
