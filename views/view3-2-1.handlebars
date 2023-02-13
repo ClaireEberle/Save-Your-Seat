@@ -2,9 +2,23 @@
 
 <h1>Current reservations:</h1>
 <div>
-    {{#each reservation}}
-    <li value="{{id}}">{{reservation_date}}, {{reservation_time}}, {{party_size}} </li>
-    {{#each}}
+  
+    {{!-- {{#if Reservations}}
+    <p>You have no reservations</p>
+    {{/if}} --}}
+    <table class="owner-table">
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Party Size</th>
+    </tr>
+    <tr>
+    {{#each Reservations}}
+    <td>{{reservation_date}}</td>
+    <td>{{reservation_time}}</td>
+    <td>{{party_size}}</td>
+    {{/each}}
+    
 </div>
 </main>
 <script src="/js/view3-2-1.js"></script>

@@ -20,9 +20,22 @@ document.querySelector("#viewresBtn").addEventListener("click",e=>{
 
    document.querySelector("#updateMenuBtn").addEventListener("click",e=>{
     e.preventDefault();
+    fetch("/api/dish", {
+        method:"GET",
+        headers:{
+            "content-Type":"application/json"
+        }
+    }).then(res=>{
+        if (res.ok) {
+            location.href="/updateMenu" 
+        }else{
+            alert("something went wrong")
+        }
+        
    
- location.href="/updateMenu"
+ 
 })
+   })
 
 //TODO: Create menu page with update options
 
@@ -88,7 +101,8 @@ fetch("/api/owner/editTime", {
         alert("something went wrong")
     }
 })
-document.querySelector("#update-time-form").classList.add("hide");
+document.querySelector("#update-hours-form").classList.add("hide");
+href="/restaurants"
 
 })
 document.querySelector("#cancelupdateTime").addEventListener("click", (e) => {
