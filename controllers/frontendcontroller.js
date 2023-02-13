@@ -81,11 +81,13 @@ router.get("/viewReservations", (req,res)=>{
   Owner.findByPk(req.session.ownerId, {
     include: [Reservation],
   }).then((ownerData)=>{
-    if(!Owner.Reservation){
-      return res.json(ownerData)
-    }
+    // if(!Owner.Reservation){
+    //   return res.render("view3-2")
+    // }
       const hbsData = ownerData.toJSON();
-      res.render("view3-2-1",hbsData);
+      console.log(hbsData)
+      res.render("view3-2-1",
+        hbsData);
   })
 });
 
