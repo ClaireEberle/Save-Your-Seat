@@ -49,5 +49,9 @@ fetch("/api/dish",{
         alert("something went wrong")
     }
 })
-document.querySelector("#save-new-dish").classList.add("hide")
+
+})
+document.querySelector("#cancel-new-dish").addEventListener("click",e=>{
+    e.preventDefault();
+    document.querySelector("#dish-form-div").classList.add("hide")
 })

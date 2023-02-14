@@ -50,5 +50,17 @@ document.querySelector("#cancle-btn").addEventListener("click", (e) => {
 document.querySelector("#menu-btn").addEventListener("click", (e) => {
   e.preventDefault();
   //TODO:make menu routes
+  fetch("api/dish,"{
+    method:"GET",
+    headers:{
+      "content-Type":"application/json"
+  }
+  }.then(res=>{
+    if(res.ok){
+      location.href="/****"
+    }else{
+      alert("something went wrong")
+    }
+  }))
   location.replace("/menu");
 });
