@@ -1,24 +1,34 @@
 <main class="userview-form">
 
 <h1>Menu</h1>
-<table>
+<table class="owner-table">
     <tr>
         <th>Main Dish</th>
         <th>Side</th>
         <th>Edit</th>
     </tr>
     <tr>
-    {{#each menu}}
+    {{#each Dishes}}
     <td>{{dishes}}</td>
     <td>{{side}}</td>
     <td><button id="show-edit-form">edit</button></td>
-    </tr>
-    <form class="hide" id="edit-menu">
-        <input type="text" id="editDish" value="{{menu.dishes}}"/>
-        <input type="text" id="editSide" value="{{menu.sides}}"/>
-        <button>Save Changegs</button>
-        
+    <div class="hide" id="menu-edit">
+    <form  id="edit-menu">
+        <input type="text" id="editDish" value="{{dishes}}"/>
+        <input type="text" id="editSide" value="{{side}}"/>
+        <button id="save-dish">Save Changes</button>
     </form>
+    </div>
+    </tr>
+    {{/each}}
 </table>
+    <button id="add-dish">Add item to menu</button>
+    <div class="hide" id="dish-form-div">
+    <form id="add-dish-form">
+        <input type="text" id="addDish" placeholder="new dish"/>
+        <input type="text" id="addSide" placeholder="new side"/>
+        <button id="save-new-dish">Save New Dish</button>
+    </form>
+    </div>
 </main>
 <script src="/js/view3-2-2.js"></script>

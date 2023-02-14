@@ -36,6 +36,16 @@ router.get("/",(req,res)=>{
    })
 })
 
+router.post("/search",(req,res)=>{
+   Owner.findOne({where:{restaurant_name:req.body.restaurant_name}}
+   ).then(ownerData=>{
+    res.json(ownerData)
+   }).catch(err=>{
+    console.log(err);
+    res.status(500).json({msg:err})
+   })
+})
+
 router.post("/login",(req,res)=>{
    Owner.findOne({
       where:{
@@ -58,4 +68,40 @@ router.post("/login",(req,res)=>{
       res.status(500).json({msg:err})
      })
 })
+
+router.put("/editTables",(req,res)=>{
+   if(!req.session.ownerId){
+      return res.status(403).json({msg:"login before editing tables"});
+   }
+   Owner.update(
+      {
+         table_capacity:req.body.table_capacity
+      },
+      {
+         where:{
+            id:req.session.ownerId
+         }
+      }
+   )
+   
+})
+
+router.put("/editTime",(req,res)=>{
+   if(!req.session.ownerId){
+      return res.status(403).json({msg:"login before editing tables"});
+   }
+   Owner.update(
+      {
+         open_time:req.body.open_time,
+         close_time:req.body.close_time
+      },
+      {
+         where:{
+            id:req.session.ownerId
+         }
+      }
+   )
+   
+})
+
 module.exports = router;
