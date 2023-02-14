@@ -101,8 +101,11 @@ router.get("/menu", (req, res) => {
   if (!req.session.userId) {
     return res.redirect("/restaurantLogin");
   }
-  User.findByPk(req.session.userId, {
-    include: [Dish],
+  Customer.findByPk(req.session.userId, {
+    include: [Reservation],
+  }).then((userData)=>{
+    const hbsData = userData.toJSON();
+    res.render("userview3-1", hbsData)
   });
 });
 

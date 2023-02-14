@@ -1,4 +1,4 @@
-document.querySelector("#mennu-return").addEventListener("click", (e) => {
+document.querySelector("#menu-return").addEventListener("click", (e) => {
     e.preventDefault();
     location.replace("/customers")
   });
