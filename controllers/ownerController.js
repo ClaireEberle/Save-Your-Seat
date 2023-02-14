@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Owner, Reservation } = require("../models");
+const { Time, Owner, Reservation } = require("../models");
 const bcrypt = require("bcrypt");
 
 router.get("/", (req, res) => {
@@ -31,7 +31,8 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Owner.create(req.body)
     .then((ownerData) => {
-      req.session.ownerEmail = req.body.email;
+      req.session.ownerId = ownerData.id
+      req.session.ownerEmail = ownerData.email;
       res.json(ownerData);
     })
     .catch((err) => {
@@ -41,21 +42,24 @@ router.post("/", (req, res) => {
 });
 
 router.post("/search", (req, res) => {
-  Owner.findOne({ where: { restaurant_name: req.body.restaurant_name } })
-    .then((ownerData) => {
-      res.json(ownerData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: err });
-    });
-});
+   Owner.findOne({
+     where: { restaurant_name: req.body.restaurant_name },
+     include: [Time],
+   })
+     .then((ownerData) => {
+       render("userview2-1", ownerData)
+     })
+     .catch((err) => {
+       console.log(err);
+       res.status(500).json({ msg: err });
+     });
+ });
 
 router.post("/login", (req, res) => {
   Owner.findOne({
     where: {
       email: req.body.email,
-    },
+    }
   })
     .then((ownerData) => {
       if (!ownerData) {

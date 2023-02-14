@@ -38,6 +38,7 @@ THEN the saved events persist
 The following animation demonstrates the application functionality:
 
 ![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/Work%20Day%20Scheduler.gif)
+![Make reservation (2)](https://user-images.githubusercontent.com/67940686/218874939-4e21badc-02b1-45e3-b7d0-a8d0fe463af3.gif)
 
 ## Review
 

@@ -16,13 +16,12 @@
   </select>
   <label for="date">Date:</label>
   <input type="text" id="datepicker" />
-  {{! <label for="time">Time:</label> }}
-  {{! <select name="time" id="party-time">
-    <option>lunch</option>
-    <option selected="selected">dinner</option>
-  </select> }}
   <p id="alertmsg"></p>
-  <div class="time-slot" id="available-time"></div>
+  <div class="time-slot" id="available-time">
+    {{#each Owner.Time}}
+    <button class="form-btn">{{Owner.Time.time_vailable}}</button>
+    {{/each}}
+  </div>
   <div id="picked-time-div">
     <p>Time picked: <span id="selected-time"></span></p>
   </div>
