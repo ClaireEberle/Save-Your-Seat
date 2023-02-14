@@ -19,4 +19,7 @@ router.use("/api/menu",menuRoutes);
 const dishRoutes = require('./dishController');
 router.use("/api/dish",dishRoutes);
 
+const nodemailerRoutes = require('./nodemailerController');
+router.use("/email",nodemailerRoutes);
+
 module.exports = router;

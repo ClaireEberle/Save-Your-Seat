@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  Reservation.findByPk(req.session.userId, { include: [Owner] })
+  Reservation.findOne({where:{CustomerId:req.session.userId}, include: [Customer,Owner] })
     .then((reservationData) => {
       res.json(reservationData);
     })
@@ -62,9 +62,9 @@ router.post("/", (req, res) => {
 // WILL PROTECTED THIS ROUTE LATER
 
 router.delete("/", (req, res) => {
-  // if(!req.session.userId){
-  //    return res.status(403).json({msg:"login first post"})
-  // }
+  if(!req.session.userId){
+     return res.status(403).json({msg:"login first post"})
+  }
   Reservation.findByPk(req.session.userId)
     .then((reservationData) => {
       if (!reservationData) {
@@ -79,7 +79,7 @@ router.delete("/", (req, res) => {
         },
       })
         .then((reservationData) => {
-          res.json(chirpData);
+          res.json(reservationData);
         })
         .catch((err) => {
           console.log(err);

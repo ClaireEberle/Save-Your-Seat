@@ -11,8 +11,9 @@ document.querySelector("#see-reservation").addEventListener("click",e=>{
         headers:{
             "content-Type":"application/json"
         }
-    }).then(res=>{
-        if(res.ok){
+    }).then((res) => res.json()).then((data)=>{
+        console.log(data)
+        if(data){
             location.href="/seereservation"
         }else{
             noResvAlert = document.createElement("p")
@@ -20,4 +21,4 @@ document.querySelector("#see-reservation").addEventListener("click",e=>{
             document.querySelector(".userview-form").append(noResvAlert)
         }
     })
-})
+    })

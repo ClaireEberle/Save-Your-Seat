@@ -36,9 +36,8 @@ router.get("/seereservation", (req, res) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
+    console.log(userdata)
     const hbsData = userdata.toJSON();
-    console.log("==============================");
-    console.log(hbsData);
     res.render("userview2-2",hbsData);
 })
 })
@@ -73,6 +72,7 @@ router.get("/customerSignup", (req, res) => {
 
 router.get("/customers", (req, res) => {
   Customer.findByPk(req.session.userId).then((customerData)=>{
+    console.log(req.session.userId)
     const hbsData = customerData.toJSON();
     res.render("userview1",hbsData);
   })

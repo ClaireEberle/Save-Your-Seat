@@ -7,8 +7,6 @@ document.querySelector("#restSignupForm").addEventListener("submit",e=>{
         table_capacity:document.querySelector("#maxtable").value,
         email:document.querySelector("#restSignupEmail").value,
         password:document.querySelector("#restSignupPassword").value
-       
-        
     }
     fetch("/api/owner/",{ 
         method:"POST",

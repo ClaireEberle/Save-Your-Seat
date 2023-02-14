@@ -10,24 +10,53 @@
     font-family: sans-serif;
 }
 
+body{
+  background-image:url(../css/backgrond.jpg);
+  background-size: cover;
+  background-position: center;
+  padding:0;
+
+}
+
 header{
     font-family: 'Dancing Script', cursive;
     font-size:500%;
     border-bottom:3px solid var(--redbtn-background-color);
     text-align: center;
-    padding:2%;
+    padding:1%;
+    background-color:var(--whitefont-color);
+}
+
+footer{
+  font-family: 'Dancing Script', cursive;
+  font-size:500%;
+  border-top:3px solid var(--redbtn-background-color);
+  text-align: center;
+  background-color:var(--whitefont-color);
+  text-align: center;
+  padding:1%;
+  align-items: center;
+}
+
+.alert-msg{
+  color:var(--redbtn-background-color);
 }
 
 .nav-bar{
   text-align: left;
-  font-size: 18%;
+  font-size: 20%;
+}
+
+.footer-a{
+  font-size: 20%;
 }
 
 .nav-bar-a{
-  padding-right: 10px;
+  padding-right: 20px;
 }
 .nav-bar-b{
   float:right;
+  padding-right: 20px;
 }
 
 #userview-1-choice{
@@ -49,6 +78,10 @@ header{
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    /* left:30%;
+    right:30%;
+    top:5%; */
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 5%;
