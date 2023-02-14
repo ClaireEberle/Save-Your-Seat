@@ -39,6 +39,11 @@ The following animation demonstrates the application functionality:
 
 ![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/Work%20Day%20Scheduler.gif)
 
+## gif test
+![Weather clearing out after storm brought lowland snow to some areas _ KING 5 weather - YouTube (2)](https://user-images.githubusercontent.com/67940686/218871701-b1d8023c-15eb-456c-bc7b-aa71e1beb6db.gif)
+
+
+
 ## Review
 
 * The URL of the deployed application
