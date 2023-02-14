@@ -10,8 +10,12 @@ router.get("/makereservation", (req, res) => {
   })
 });
 
-router.post("/makereservation", (req, res) => {
-  Owner.findOne(req.body).then((data) => {
+router.get("/reservation", (req, res) => {
+  if (!req.session.userId) {
+    res.redirect("/customerLogin");
+   }
+  Reservation.findOne({where:{CustomerID:req.session.userId}})
+    .then((data) => {
     res.json(data);
   });
 });
@@ -81,11 +85,13 @@ router.get("/viewReservations", (req,res)=>{
   Owner.findByPk(req.session.ownerId, {
     include: [Reservation],
   }).then((ownerData)=>{
-    if(!Owner.Reservation){
-      return res.status(401).json({msg:"You do not have any reservations"})
-    }
+    // if(!Owner.Reservation){
+    //   return res.render("view3-2")
+    // }
       const hbsData = ownerData.toJSON();
-      res.render("view3-2-1",hbsData);
+      console.log(hbsData)
+      res.render("view3-2-1",
+        hbsData);
   })
 });
 
@@ -94,17 +100,15 @@ router.get("/updateMenu", (req,res)=>{
     return res.redirect("/restaurantLogin")
   }
   Owner.findByPk(req.session.ownerId, {
-    include: [Menu]
+    include: [Dish]
   }).then((ownerData)=>{
-    if(!Owner.Menu){
-      return res.json(ownerData)
-    }
+    // if(!Owner.Dish){
+    //   return res.json(ownerData)
+    // }
   
-    const hbsOwner = ownerData.map(owner=>owner.toJSON());
-    console.log(hbsOwner)
-    res.render("view3-2-2", {
-      allDishes:hbsOwner
-    });
+    const hbsDish = ownerData.toJSON();
+    console.log(hbsDish)
+    res.render("view3-2-2", hbsDish);
   })
 });
 

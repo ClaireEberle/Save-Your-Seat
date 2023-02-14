@@ -86,6 +86,33 @@ flex-wrap:wrap;
   flex-direction: column;
   line-height: 3em;
 }
+.hide {
+  display: none; 
+}
+
+.owner-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.owner-table td, .owner-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.owner-table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+.owner-table tr:hover {background-color: #ddd;}
+.owner-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #c1121f;
+  color: #ffffff;
+}
+.owner-table td{
+  text-align: center;
+}
 
 .form-btn {
   margin-top: 2em;
