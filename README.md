@@ -48,12 +48,12 @@ The following animation demonstrates the application functionality:
 ![Make reservation (2)](https://user-images.githubusercontent.com/67940686/218874939-4e21badc-02b1-45e3-b7d0-a8d0fe463af3.gif)
 
 ## Contributing
-Team 9 Project 2 
-Yanqing Lou   | Project Manager
-Claire Eberle | Views
-Heiu Nguyen   | Controllers
-Sidney Basa   | Models
-UW Coding Bootcamp (c) 2023
+Team 9 Project 2 <br>
+Yanqing Lou   | Project Manager <br>
+Claire Eberle | Views <br>
+Heiu Nguyen   | Controllers <br>
+Sidney Basa   | Models <br>
+UW Coding Bootcamp (c) 2023 <br>
 
 ## Installation
 This program requires node package manager to be installed <br>
@@ -82,7 +82,7 @@ Step 7: Then follow the prompts to create a restaurant, add hours open and table
 MIT License
 
 ## Review
-* The URL of the deployed application
+* The URL of the deployed application <br>
 https://make-reservation.herokuapp.com/
-* The URL of the GitHub repository, with a unique name and a README describing the project
+* The URL of the GitHub repository, with a unique name and a README describing the project <br>
 https://github.com/ClaireEberle/Save-Your-Seat
