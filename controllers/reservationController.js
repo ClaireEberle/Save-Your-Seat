@@ -61,11 +61,11 @@ router.post("/", (req, res) => {
 // THIS ROUTE IS NOT PROTECTED NON LOG IN USER CAN ALSO ACCESS
 // WILL PROTECTED THIS ROUTE LATER
 
-router.delete("/:id", (req, res) => {
+router.delete("/", (req, res) => {
   // if(!req.session.userId){
   //    return res.status(403).json({msg:"login first post"})
   // }
-  Reservation.findByPk(req.params.id)
+  Reservation.findByPk(req.session.userId)
     .then((reservationData) => {
       if (!reservationData) {
         return res.status(404).json({ msg: "no such reservation" });
@@ -75,7 +75,7 @@ router.delete("/:id", (req, res) => {
       // }
       Reservation.destroy({
         where: {
-          id: req.params.id,
+          id: req.session.userId,
         },
       })
         .then((reservationData) => {

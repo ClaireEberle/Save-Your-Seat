@@ -4,9 +4,38 @@ let alertMsg = document.querySelector("#alertmsg");
 let makeReservationForm = document.querySelector("#make-reservation-form");
 let pickedTimeDiv = document.querySelector("#picked-time-div");
 var restaurantId ="";
+const nodemailer = require('nodemailer');
+const { callbackPromise } = require('nodemailer/lib/shared');
 
-const sendEmail = require("./nodemailer")
+//*nodemailer set up
+function sendEmail(context){
+  return new Promise((resolve,reject)=>{
+      const transporter = nodemailer.createTransport({
+          service:"hotmail",
+          auth:{
+              user:"makeonereservation@outlook.com",
+              pass:"Team9project2"
+          }
+      });
+      
+      const options = {
+          from:"makeonereservation@outlook.com",
+          to:"yanqinglou@outlook.com",
+          subject:"sending email with node.js",
+          text:context
+      };
+      
+      transporter.sendMail(options,  function(err,info){
+      if(err){
+          console.log(err);
+          return
+      }
+      console.log(info.response)
+      })
+  })
+}
 
+//*find time button
 document.querySelector("#findtime").addEventListener("click", (e) => {
   e.preventDefault();
   let partySize = document.querySelector("#party-size").value;
@@ -89,6 +118,8 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
       });
     });
 });
+
+
 
 //Jquery function
 //* datepicker
