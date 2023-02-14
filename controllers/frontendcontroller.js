@@ -209,15 +209,15 @@ router.post("/restaurant", (req, res) => {
 
     }
   }).then((data)=>{
-    console.log('Owner',data.dataValues.id)
+    // console.log('Owner',data.dataValues.id)
     openTime = parseInt(data.open_time);
     closeTime = parseInt(data.close_time)
     let time_slot = [];
     for(let i = openTime; i < closeTime ; i++){
       time_slot.push(i.toString() + ":00")
     }
-    res.json(data)
-    console.log(time_slot)
+    // res.json(data)
+    // console.log(time_slot)
     Time.findAll({
       where:{
         date: req.body.date,
@@ -225,6 +225,10 @@ router.post("/restaurant", (req, res) => {
       }
     }).then((Timedata)=>{
       if(Timedata.length > 0){
+        console.log("==========")
+        console.log(Timedata.length)
+        const hbsData = Timedata.toJSON();
+        res.render("userview2-1", hbsData)
         res.json(Timedata)
       }else {
         time_slot.forEach(element =>{
@@ -233,6 +237,7 @@ router.post("/restaurant", (req, res) => {
             date: req.body.date,
             OwnerId : data.dataValues.id
           })
+          // if()
         })
       }
     })
@@ -246,17 +251,17 @@ router.post("/restaurant", (req, res) => {
 //   "OwnerId" : 1
 // }
 
-router.get("/time", (req, res) => {
+router.post("/time", (req, res) => {
   Time.findAll(
-  //   {
-  //   where:{
-  //     date : req.body.date,
-  //     OwnerId : req.body.OwnerId
-  //   }
-  // }
+    {
+    where:{
+      date : req.body.date,
+      OwnerId : req.body.OwnerId
+    }
+  }
   )
     .then((userData) => {
-      res.json(userData);
+      res.render("userview2-1",userData)
     })
     .catch((err) => {
       console.log(err);
@@ -264,16 +269,16 @@ router.get("/time", (req, res) => {
     });
 });
 
-router.post("/time", (req, res) => {
-  Time.create(req.body)
-  .then((userData) => {
-    res.json(userData);
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json({ msg: err });
-  });
-});
+// router.post("/time", (req, res) => {
+//   Time.create(req.body)
+//   .then((userData) => {
+//     res.json(userData);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//     res.status(500).json({ msg: err });
+//   });
+// });
 
 
 module.exports = router;
