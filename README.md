@@ -8,15 +8,19 @@ The application allows both restaurant-goers and restaurant owners to manage the
 ## User Story
 
 ```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
+AS a restaurant customer,
+I WANT to make reservation on the restaurant I selected at the available hour
+SO THAT I can enjoy the meal without waiting for a seat.
+
+As a restaurant owner,
+I WANT to manage several restaurants in one application 
+SO THAT management efficiency is improved.
 ```
 
 ## Acceptance Criteria
 
 ```md
-GIVEN I am using a daily planner to create a schedule
+GIVEN I am using make the 
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar
 WHEN I scroll down
@@ -33,7 +37,6 @@ THEN the saved events persist
 
 The following animation demonstrates the application functionality:
 
-<!-- @TODO: create ticket to review/update image) -->
 ![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/Work%20Day%20Scheduler.gif)
 
 ## Review
