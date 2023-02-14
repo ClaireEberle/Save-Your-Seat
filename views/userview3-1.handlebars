@@ -1,0 +1,27 @@
+<main class="userview-form">
+
+<h1>Menu</h1>
+<table class="owner-table">
+    <tr>
+        <th>Main Dish</th>
+        <th>Side</th>
+        <th>Remove</th>
+    </tr>
+    <tr>
+        <div>
+    {{#each Dishes}}
+    <td>{{dishes}}</td>
+    <td>{{side}}</td>
+    
+     <td class="tbleBtn"><button class="delBtn" id="{{id}}">remove</button></td>
+
+    </tr>
+    {{/each}}
+        </div>
+</table>
+
+    <button class="form-btn" id="menu-return">return to profile</button>
+    
+</main>
+
+<script src="/js/userview3-1.js"></script>
