@@ -36,9 +36,8 @@ router.get("/seereservation", (req, res) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
+    console.log(userdata)
     const hbsData = userdata.toJSON();
-    console.log("==============================");
-    console.log(hbsData);
     res.render("userview2-2",hbsData);
 })
 })
