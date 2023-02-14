@@ -50,5 +50,29 @@ document.querySelector("#cancle-btn").addEventListener("click", (e) => {
 document.querySelector("#menu-btn").addEventListener("click", (e) => {
   e.preventDefault();
   //TODO:make menu routes
-  location.replace("/menu");
-});
+  fetch("/api/reservation/user", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res)=>res.json())
+  .then((resData)=>{
+    const ownerID = JSON.stringify(resData)
+    console.log(ownerID)
+  })
+  location.replace("/menu")
+})
+//   fetch("api/dish,"{
+//     method:"GET",
+//     headers:{
+//       "content-Type":"application/json"
+//   }
+//   }.then(res=>{
+//     if(res.ok){
+//       location.href="/****"
+//     }else{
+//       alert("something went wrong")
+//     }
+//   }))
+//   location.replace("/menu");
+// });
