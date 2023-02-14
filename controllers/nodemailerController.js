@@ -1,19 +1,22 @@
+const express = require('express');
+const router = express.Router();
 const nodemailer = require('nodemailer');
 const { callbackPromise } = require('nodemailer/lib/shared');
 
-application.post('/send',(req,res)=>{
+router.post('/',(req,res)=>{
     const output = `
-    <h3>Dear ${req.body.name}</h3>
-    <br>
-    <p>You have a reservation with ${req.body.restaurant} on ${req.boy.date}</p>
-    <p>at ${req.body.time}.</p>
-    <p>Pary size is ${req.body.party_size}</p>
-    
-    <p>We are looking forward to seeing you and your party group.</p>
-    
-    <h3>${req.body.restaurant}</h3>
-    `
+    Dear ${req.body.customer_name}
 
+    You have a reservation with ${req.body.restaurant} on ${req.body.date}
+    at ${req.body.time}.
+    Pary size is ${req.body.party_size}
+    
+    We are looking forward to seeing you and your party group.
+    
+    ${req.body.restaurant}
+    Save your seat.app
+    `
+    
     const transporter = nodemailer.createTransport({
         host:"smtp.office365.com",
         port:587,
@@ -29,8 +32,9 @@ application.post('/send',(req,res)=>{
     
     const options = {
         from:"makeonereservation@outlook.com",
+        //TODO:change into user email: req.body.email
         to:"yanqinglou@outlook.com",
-        subject:"sending email with node.js",
+        subject:"Reservation Info",
         text:output
     };
     transporter.sendMail(options,  function(err,info){
@@ -39,8 +43,8 @@ application.post('/send',(req,res)=>{
             return
         }
         console.log(info.response)
-        res.render('contact',{msg:"Email has been sent.Please check your email."})
+        res.render('userview2-2',{msg:"Email has been sent.Please check your email."})
         })
 })
 
-module.exports = {sendEmail}
+module.exports = router;

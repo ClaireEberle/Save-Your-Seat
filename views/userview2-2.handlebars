@@ -6,16 +6,15 @@
   </session>
   <div class="reservation-form" id="reservation-form">
     <p>Customer Name:</p>
-    <p name = "name"><strong>{{Customer.name}}</strong></p>
+    <p id="customer_name"><strong>{{Customer.name}}</strong></p>
     <p>Customer Email:</p>
-    <p name="email"><strong>{{Customer.email}}</strong></p>
+    <p id="email"><strong>{{Customer.email}}</strong></p>
     <p>Party Size:</p>
-    <p name="party_size"><strong>{{party_size}}</strong></p>
+    <p id="party_size"><strong>{{party_size}}</strong></p>
     <p>Date:</p>
-    <p name="date"><strong>{{reservation_date}}</strong></p>
+    <p id="date"><strong>{{reservation_date}}</strong></p>
     <p>Time:</p>
-    <p name="time"><strong>{{reservation_time}}</strong></p>
-    <p></p>
+    <p id="time"><strong>{{reservation_time}}</strong></p> 
   </div>
   <p>{{msg}}</p>
   <button class="form-btn  " id="send-reservation">Send Email</button>
@@ -25,8 +24,4 @@
 
 <script src="/js/userview2-2.js"></script>
 
-<h3>Dear ${req.body.name}</h3>
-<br>
-<p>You have a reservation with ${req.body.restaurant} on ${req.boy.date}</p>
-<p>at ${req.body.time}.</p>
-<p>Pary size is ${req.body.party_size}</p>
+
