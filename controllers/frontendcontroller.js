@@ -123,6 +123,16 @@ router.get("/updateTables", (req,res)=>{
   })
 })
 
+//req should look like this
+// {
+// 	"reservation_date" : "2023-02-14",
+// 	"party_size": 2,
+// 	"reservation_time" : "18:00",
+// 	"OwnerId" : 1,
+// 	"CustomerId": req.session.userId
+// }
+
+
 router.post("/makereservation", (req, res) => {
   Reservation.findAll({
     where: {
@@ -170,34 +180,30 @@ router.post("/restaurant", (req, res) => {
       restaurant_name : req.body.restaurant_name
     }
   }).then((data)=>{
+    console.log('Owner',data.dataValues.id)
     openTime = parseInt(data.open_time);
     closeTime = parseInt(data.close_time)
     let time_slot = [];
     for(let i = openTime; i < closeTime ; i++){
       time_slot.push(i.toString() + ":00")
     }
-    //res.json(data)
+    res.json(data)
     console.log(time_slot)
     Time.findAll({
       where:{
         date: req.body.date,
-        OwnerId : data.id
+        OwnerId : data.dataValues.id
       }
     }).then((Timedata)=>{
-      if(Timedata){
-        console.log(Timedata)
-        render("userview2-1",Timedata)
+      if(Timedata.length > 0){
+        res.json(Timedata)
       }else {
         time_slot.forEach(element =>{
           Time.create({
             time_available: element,
             date: req.body.date,
-            OwnerId : data.id
-          }).then((Timedata)=>{
-            console.log(Timedata)
-            render("userview2-1",Timedata)
+            OwnerId : data.dataValues.id
           })
-          
         })
       }
     })
@@ -205,9 +211,21 @@ router.post("/restaurant", (req, res) => {
   })
 })
 
+// req.body should look like this
+// {
+//   "date" : "2023-02-14",
+//   "OwnerId" : 1
+// }
 
 router.get("/time", (req, res) => {
-  Time.findAll()
+  Time.findAll(
+  //   {
+  //   where:{
+  //     date : req.body.date,
+  //     OwnerId : req.body.OwnerId
+  //   }
+  // }
+  )
     .then((userData) => {
       res.json(userData);
     })
@@ -215,6 +233,17 @@ router.get("/time", (req, res) => {
       console.log(err);
       res.status(500).json({ msg: err });
     });
+});
+
+router.post("/time", (req, res) => {
+  Time.create(req.body)
+  .then((userData) => {
+    res.json(userData);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({ msg: err });
+  });
 });
 
 
