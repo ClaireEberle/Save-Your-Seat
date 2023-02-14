@@ -14,7 +14,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  Reservation.findOne({where:{CustomerId:req.session.userId}, include: [Customer,Owner] })
+  Reservation.findOne({
+    where: { CustomerId: req.session.userId },
+    include: [Customer, Owner],
+  })
     .then((reservationData) => {
       res.json(reservationData);
     })
@@ -62,20 +65,18 @@ router.post("/", (req, res) => {
 // WILL PROTECTED THIS ROUTE LATER
 
 router.delete("/", (req, res) => {
-  if(!req.session.userId){
-     return res.status(403).json({msg:"login first post"})
+  if (!req.session.userId) {
+    return res.status(403).json({ msg: "login first post" });
   }
-  Reservation.findByPk(req.session.userId)
+  Reservation.findOne({where:{CustomerId:req.session.userId}})
     .then((reservationData) => {
       if (!reservationData) {
         return res.status(404).json({ msg: "no such reservation" });
       }
-      // else if(reservationData.UserId!== req.session.userId){
-      //    return res.status(403).json({msg:"not your chirp!"})
-      // }
+      console.log(reservationData);
       Reservation.destroy({
         where: {
-          id: req.session.userId,
+          CustomerId: req.session.userId,
         },
       })
         .then((reservationData) => {

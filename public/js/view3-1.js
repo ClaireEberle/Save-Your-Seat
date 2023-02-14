@@ -17,7 +17,7 @@ document.querySelector("#restSignupForm").addEventListener("submit",e=>{
     }).then(res=>{
         if(res.ok){
             alert("Welcome! You have created a profile");
-            location.href="/restaurantLogin"
+            location.href="/restaurants"
         }else{
             console.log(restSignupObj);
             alert("wrong email or password")

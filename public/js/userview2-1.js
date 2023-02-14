@@ -30,27 +30,34 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   }
   makeReservationForm.append(alertMsg);
   // if (document.querySelector("#datepicker").value<today.()) {
-  const customerInput = { restaurant_name: pickedRestaurant };
+  const customerInput = { 
+    restaurant_name: pickedRestaurant,
+  };
   console.log(customerInput)
-  fetch("/api/owner/search", {
+  fetch("/restaurant", {
     method: "POST",
     body: JSON.stringify(customerInput),
     headers: {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => res.json())
-    .then((ownerdata) => {
-      console.log(ownerdata)
-      let openTime = parseInt(ownerdata.open_time, 10);
-      let closeTime = parseInt(ownerdata.close_time, 10);
-      restaurantId = ownerdata.id
-      for (var i = openTime; i < closeTime; i++) {
-        var timeSlotBtn = document.createElement("button");
-        timeSlotBtn.textContent = i.toString() + ":00";
-        timeSlotBtn.classList.add("form-btn", "time-slot-btn");
-        availableTimeDiv.append(timeSlotBtn);
+    .then((res) => { 
+      if (res.ok) {
+        return;
+      } else {
+        alert("something is wrong. can't fine anything");
       }
+    // .then((ownerdata) => {
+      // console.log(ownerdata)
+      // let openTime = parseInt(ownerdata.open_time, 10);
+      // let closeTime = parseInt(ownerdata.close_time, 10);
+      // restaurantId = ownerdata.id
+      // for (var i = openTime; i < closeTime; i++) {
+      //   var timeSlotBtn = document.createElement("button");
+      //   timeSlotBtn.textContent = i.toString() + ":00";
+      //   timeSlotBtn.classList.add("form-btn", "time-slot-btn");
+      //   availableTimeDiv.append(timeSlotBtn);
+      // }
     })
     .then(() => {
       availableTimeDiv.addEventListener("click", (e) => {

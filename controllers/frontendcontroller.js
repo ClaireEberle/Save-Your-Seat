@@ -36,7 +36,6 @@ router.get("/seereservation", (req, res) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
-    console.log(userdata)
     const hbsData = userdata.toJSON();
     res.render("userview2-2",hbsData);
 })
@@ -56,7 +55,7 @@ router.get("/newrestaurant", (req, res) => {
 
 router.get("/restaurants", (req, res) => {
  Owner.findByPk(req.session.ownerId).then((ownerData)=>{ 
-   console.log(ownerData);
+  //  console.log(ownerData);
    const hbsData = ownerData.toJSON();
    res.render("view3-2", hbsData);
   })
@@ -186,15 +185,19 @@ router.post("/restaurant", (req, res) => {
       }
     }).then((Timedata)=>{
       if(Timedata){
-        res.json(Timedata)
+        console.log(Timedata)
+        render("userview2-1",Timedata)
       }else {
         time_slot.forEach(element =>{
           Time.create({
             time_available: element,
             date: req.body.date,
             OwnerId : data.id
+          }).then((Timedata)=>{
+            console.log(Timedata)
+            render("userview2-1",Timedata)
           })
-    
+          
         })
       }
     })
