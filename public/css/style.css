@@ -23,8 +23,19 @@ header{
     font-size:500%;
     border-bottom:3px solid var(--redbtn-background-color);
     text-align: center;
-    padding:2%;
+    padding:1%;
     background-color:var(--whitefont-color);
+}
+
+footer{
+  font-family: 'Dancing Script', cursive;
+  font-size:500%;
+  border-top:3px solid var(--redbtn-background-color);
+  text-align: center;
+  background-color:var(--whitefont-color);
+  text-align: center;
+  padding:1%;
+  align-items: center;
 }
 
 .alert-msg{
@@ -33,14 +44,19 @@ header{
 
 .nav-bar{
   text-align: left;
-  font-size: 18%;
+  font-size: 20%;
+}
+
+.footer-a{
+  font-size: 20%;
 }
 
 .nav-bar-a{
-  padding-right: 10px;
+  padding-right: 20px;
 }
 .nav-bar-b{
   float:right;
+  padding-right: 20px;
 }
 
 #userview-1-choice{
