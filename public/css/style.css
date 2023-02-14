@@ -1,6 +1,5 @@
 :root{
     --redbtn-background-color:#c1121f;
-    --darkcolor:#110426;
     --whitefont-color:#ffffff;
 }
 
@@ -30,8 +29,7 @@ header{
     border-bottom:3px solid var(--redbtn-background-color);
     text-align: center;
     padding:1%;
-    background-color:var(--darkcolor);
-    color:var(--whitefont-color)
+    background-color:var(--whitefont-color);
 }
 
 footer{
@@ -39,15 +37,14 @@ footer{
   font-size:500%;
   border-top:3px solid var(--redbtn-background-color);
   text-align: center;
-  background-color:var(--darkcolor);
+  background-color:var(--whitefont-color);
   text-align: center;
-  padding:1%;
+  /* padding:1%; */
   align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 2.5rem; 
-  color:var(--whitefont-color);
 }
 
 .alert-msg{
@@ -61,17 +58,14 @@ footer{
 
 .footer-a{
   font-size: 20%;
-  color:var(--whitefont-color);
 }
 
 .nav-bar-a{
   padding-right: 20px;
-  color:var(--whitefont-color);
 }
 .nav-bar-b{
   float:right;
   padding-right: 20px;
-  color:var(--whitefont-color);
 }
 
 #userview-1-choice{

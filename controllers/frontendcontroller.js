@@ -37,7 +37,7 @@ router.get("/seeallreservation", (req, res) => {
     //   res.json(userdata)
     // }
     const hbsData = userdata.toJSON();
-    res.render("userview2-2",hbsData);
+    res.render("seeallreservation",hbsData);
 })
 })
 
@@ -216,7 +216,7 @@ router.post("/restaurant", (req, res) => {
     for(let i = openTime; i < closeTime ; i++){
       time_slot.push(i.toString() + ":00")
     }
-    // res.json(data)
+    res.json(data)
     // console.log(time_slot)
     Time.findAll({
       where:{
@@ -237,7 +237,6 @@ router.post("/restaurant", (req, res) => {
             date: req.body.date,
             OwnerId : data.dataValues.id
           })
-          // if()
         })
       }
     })
