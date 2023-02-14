@@ -62,11 +62,10 @@ Step 2: Clone this repository to a folder in your local machine <br>
 Step 3: Open Git Bash, Windows Powershell or other CLI terminal <br>
 Step 4: Change to the directory to the folder where you cloned this repository <br>
 Step 5: The fastest way to interact with this program is to type code . for vs code <br>
-Step 6: In Visual Studio Code, click to the index.js in the readme_generator folder <br>
+Step 6: In Visual Studio Code, click to the server.js in the save-your-seat folder <br>
 Step 7: Right click on index.js and in the drop down menu, open this in a terminal window <br>
 Step 8: In the terminal window, install the node package mamanger by typing npm install <br>
-Step 9: Next install the dependency inquirer by typing npm i inquirer <br>
-Step 10: Now run the program with node server.js <br>
+Step 9: Now run the program, in the termnial type node server.js <br>
 
 ## Usage
 This program is accessible from the web browser
