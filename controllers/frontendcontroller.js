@@ -36,7 +36,6 @@ router.get("/seereservation", (req, res) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
-    console.log(userdata)
     const hbsData = userdata.toJSON();
     res.render("userview2-2",hbsData);
 })
@@ -56,7 +55,7 @@ router.get("/newrestaurant", (req, res) => {
 
 router.get("/restaurants", (req, res) => {
  Owner.findByPk(req.session.ownerId).then((ownerData)=>{ 
-   console.log(ownerData);
+  //  console.log(ownerData);
    const hbsData = ownerData.toJSON();
    res.render("view3-2", hbsData);
   })

@@ -32,7 +32,6 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   // if (document.querySelector("#datepicker").value<today.()) {
   const customerInput = { 
     restaurant_name: pickedRestaurant,
-   
   };
   console.log(customerInput)
   fetch("/restaurant", {

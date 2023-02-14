@@ -31,7 +31,8 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Owner.create(req.body)
     .then((ownerData) => {
-      req.session.ownerEmail = req.body.email;
+      req.session.ownerId = ownerData.id
+      req.session.ownerEmail = ownerData.email;
       res.json(ownerData);
     })
     .catch((err) => {

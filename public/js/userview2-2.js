@@ -1,5 +1,7 @@
 var reservationFormDiv = document.querySelector("#see-reservation-form");
 var sendEmailBtn = document.querySelector("#send-reservation");
+
+//send email through nodemailer
 sendEmailBtn.addEventListener("click", (e) => {
   let restaurantName = document.querySelector("#restaurant-name").textContent;
   let customerName = document.querySelector("#customer_name").textContent;
@@ -7,6 +9,7 @@ sendEmailBtn.addEventListener("click", (e) => {
   let partyTime = document.querySelector("#time").textContent;
   let partySize = document.querySelector("#party_size").textContent;
   let customerEmail = document.querySelector("#email").textContent;
+  //email body
   const emailObj = {
     customer_name: customerName,
     restaurant: restaurantName,
@@ -34,6 +37,8 @@ sendEmailBtn.addEventListener("click", (e) => {
 var reservationSection = document.querySelector("#reservation-form");
 var reservationProfile = document.querySelector("#restaurant-profile");
 var cancleBtn = document.querySelector("#cancle-reservation");
+
+//*cancle a reservation
 cancleBtn.addEventListener("click", (e) => {
   e.preventDefault();
   //*find reservation and delete data
