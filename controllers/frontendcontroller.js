@@ -177,16 +177,28 @@ router.post("/restaurant", (req, res) => {
     for(let i = openTime; i < closeTime ; i++){
       time_slot.push(i.toString() + ":00")
     }
-    res.json(data)
+    //res.json(data)
     console.log(time_slot)
-    time_slot.forEach(element =>{
-      Time.create({
-        time_available: element,
+    Time.findAll({
+      where:{
         date: req.body.date,
         OwnerId : data.id
-      })
-
+      }
+    }).then((Timedata)=>{
+      if(Timedata){
+        res.json(Timedata)
+      }else {
+        time_slot.forEach(element =>{
+          Time.create({
+            time_available: element,
+            date: req.body.date,
+            OwnerId : data.id
+          })
+    
+        })
+      }
     })
+    
   })
 })
 

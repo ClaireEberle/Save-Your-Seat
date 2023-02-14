@@ -20,6 +20,7 @@ Reservation.belongsTo(Customer)
 
 Owner.hasOne(Time)
 Time.belongsTo(Owner)
+//reference key: OwnerId
 
 module.exports = {
     Customer,
