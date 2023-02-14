@@ -50,6 +50,16 @@ document.querySelector("#cancle-btn").addEventListener("click", (e) => {
 document.querySelector("#menu-btn").addEventListener("click", (e) => {
   e.preventDefault();
   //TODO:make menu routes
+  fetch("/api/reservation/user", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res)=>res.json())
+  .then((resData)=>{
+    const ownerID = JSON.stringify(resData)
+    console.log(ownerID)
+  })
   location.replace("/menu")
 })
 //   fetch("api/dish,"{
