@@ -1,6 +1,6 @@
-
-
-document.querySelector("#send-reservation").addEventListener("click",e=>{
+var reservationFormDiv = document.querySelector("#see-reservation-form")
+var sendEmailBtn = document.querySelector("#send-reservation").
+sendEmailBtn.addEventListener("click",e=>{
   fetch("/api/reservation/user", {
     method: "GET",
     body: JSON.stringify(resvObj),
@@ -23,6 +23,7 @@ cancleBtn.addEventListener("click",e=>{
   cancleMsg.textContent = "Your reservation has been cancled successfully."
   reservationProfile.append(cancleMsg)
   cancleBtn.remove()
+  sendEmailBtn.remove()
   fetch("/api/reservation", {
     method: "DELETE",
     headers: {
@@ -34,6 +35,12 @@ cancleBtn.addEventListener("click",e=>{
     }else{
         alert("wrong email or password")
     }
+}).then(()=>{
+  makeReservationBtn = document.createElement("a")
+  makeReservationBtn.classList.add("form-btn")
+  makeReservationBtn.textContent = "Make reservation"
+  makeReservationBtn.href = "/makereservation"
+  reservationFormDiv.append(makeReservationBtn)
 })
 })
 
