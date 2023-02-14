@@ -33,7 +33,7 @@ router.post('/',(req,res)=>{
     const options = {
         from:"makeonereservation@outlook.com",
         //TODO:change into user email: req.body.email
-        to:"yanqinglou@outlook.com",
+        to:req.body.email,
         subject:"Reservation Info",
         text:output
     };

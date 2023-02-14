@@ -27,6 +27,10 @@ header{
     background-color:var(--whitefont-color);
 }
 
+.alert-msg{
+  color:var(--redbtn-background-color);
+}
+
 .nav-bar{
   text-align: left;
   font-size: 18%;

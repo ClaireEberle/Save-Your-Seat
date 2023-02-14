@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  Reservation.findByPk(req.session.userId, { include: [Owner] })
+  Reservation.findOne({where:{CustomerId:req.session.userId}, include: [Customer,Owner] })
     .then((reservationData) => {
       res.json(reservationData);
     })
