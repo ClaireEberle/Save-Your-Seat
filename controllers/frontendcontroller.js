@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Owner, Customer, Reservation, Menu, Dish } = require("../models");
+const { Owner, Customer, Reservation, Menu, Dish, Time } = require("../models");
 
 router.get("/makereservation", (req, res) => {
   Owner.findAll().then(ownerData=>{
@@ -124,6 +124,95 @@ router.get("/updateTables", (req,res)=>{
   })
 })
 
+router.post("/makereservation", (req, res) => {
+  Reservation.findAll({
+    where: {
+      reservation_date : req.body.reservation_date,
+      reservation_time : req.body.reservation_time,
+    }
+  }).then(reservationData =>{
+    Owner.findOne({
+      where: {
+        id : req.body.OwnerID
+      }
+    }).then((Ownerdata)=>{
+          if(reservationData.length < Ownerdata.table_capacity){
+            Reservation.create(req.body
+              ).then(reservationData=>{
+                res.json(reservationData)
+              }).catch(err=>{
+                console.log(err);
+                res.status(500).json({msg:err})
+              })
+            }
+            if(reservationData.length == Ownerdata.table_capacity){
+              Time.destroy({
+                where: {
+                  date : req.body.reservation_date,
+                  time_available : req.body.reservation_time,
+                }
+              })
+              res.json({msg: 'Please choose different time'})
+            }
+        })
+    })
+});
+
+/* req.body should look like this...
+    {
+        "restaurant_name": "The Wandering Hedgehog",
+        "date" : "2023-02-18"
+    }
+  */
+
+router.post("/restaurant", (req, res) => {
+  Owner.findOne({
+    where: {
+      restaurant_name : req.body.restaurant_name
+    }
+  }).then((data)=>{
+    openTime = parseInt(data.open_time);
+    closeTime = parseInt(data.close_time)
+    let time_slot = [];
+    for(let i = openTime; i < closeTime ; i++){
+      time_slot.push(i.toString() + ":00")
+    }
+    //res.json(data)
+    console.log(time_slot)
+    Time.findAll({
+      where:{
+        date: req.body.date,
+        OwnerId : data.id
+      }
+    }).then((Timedata)=>{
+      if(Timedata){
+        res.json(Timedata)
+      }else {
+        time_slot.forEach(element =>{
+          Time.create({
+            time_available: element,
+            date: req.body.date,
+            OwnerId : data.id
+          })
+    
+        })
+      }
+    })
+    
+  })
+})
+
+
+router.get("/time", (req, res) => {
+  Time.findAll()
+    .then((userData) => {
+      res.json(userData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: err });
+    });
+});
 
 
 module.exports = router;
