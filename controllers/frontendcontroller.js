@@ -186,15 +186,19 @@ router.post("/restaurant", (req, res) => {
       }
     }).then((Timedata)=>{
       if(Timedata){
-        res.json(Timedata)
+        console.log(Timedata)
+        render("userview2-1",Timedata)
       }else {
         time_slot.forEach(element =>{
           Time.create({
             time_available: element,
             date: req.body.date,
             OwnerId : data.id
+          }).then((Timedata)=>{
+            console.log(Timedata)
+            render("userview2-1",Timedata)
           })
-    
+          
         })
       }
     })
