@@ -72,6 +72,7 @@ router.get("/customerSignup", (req, res) => {
 
 router.get("/customers", (req, res) => {
   Customer.findByPk(req.session.userId).then((customerData)=>{
+    console.log(req.session.userId)
     const hbsData = customerData.toJSON();
     res.render("userview1",hbsData);
   })
