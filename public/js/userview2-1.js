@@ -32,6 +32,7 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   // if (document.querySelector("#datepicker").value<today.()) {
   const customerInput = { 
     restaurant_name: pickedRestaurant,
+    date:inputDate
   };
   console.log(customerInput)
   fetch("/restaurant", {
@@ -47,6 +48,7 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
       } else {
         alert("something is wrong. can't fine anything");
       }
+
     // .then((ownerdata) => {
       // console.log(ownerdata)
       // let openTime = parseInt(ownerdata.open_time, 10);

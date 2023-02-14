@@ -14,7 +14,7 @@ document.querySelector("#see-reservation").addEventListener("click",e=>{
     }).then((res) => res.json()).then((data)=>{
         console.log(data)
         if(data){
-            location.href="/seereservation"
+            location.href="/seeallreservation"
         }else{
             noResvAlert = document.createElement("p")
             noResvAlert.textContent = "Currently you don't have any reservation with us."

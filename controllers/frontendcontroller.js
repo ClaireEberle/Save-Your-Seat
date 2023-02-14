@@ -31,7 +31,7 @@ router.get("/seeallreservation", (req, res) => {
   if (!req.session.userId) {
    res.redirect("/customerLogin");
   }
-  Reservation.findOne({where:{CustomerId:req.session.userId}
+  Reservation.findAll({where:{CustomerId:req.session.userId}
   ,include:[Owner,Customer]}).then((userdata) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
@@ -196,6 +196,7 @@ router.post("/restaurant", (req, res) => {
   Owner.findOne({
     where: {
       restaurant_name : req.body.restaurant_name
+
     }
   }).then((data)=>{
     openTime = parseInt(data.open_time);
@@ -214,7 +215,7 @@ router.post("/restaurant", (req, res) => {
     }).then((Timedata)=>{
       if(Timedata){
         console.log(Timedata)
-        render("userview2-1",Timedata)
+        res.render("userview2-1",Timedata)
       }else {
         time_slot.forEach(element =>{
           Time.create({
@@ -223,7 +224,7 @@ router.post("/restaurant", (req, res) => {
             OwnerId : data.id
           }).then((Timedata)=>{
             console.log(Timedata)
-            render("userview2-1",Timedata)
+            res.render("userview2-1",Timedata)
           })
           
         })
