@@ -27,7 +27,35 @@ router.get("/makereservation/confirmed", (req, res) => {
 })
 });
 
+router.get("/seeallreservation", (req, res) => {
+  if (!req.session.userId) {
+   res.redirect("/customerLogin");
+  }
+  Reservation.findOne({where:{CustomerId:req.session.userId}
+  ,include:[Owner,Customer]}).then((userdata) => {
+    // if(!Customer.Reservation){
+    //   res.json(userdata)
+    // }
+    const hbsData = userdata.toJSON();
+    res.render("userview2-2",hbsData);
+})
+})
+
 router.get("/seereservation", (req, res) => {
+  if (!req.session.userId) {
+   res.redirect("/customerLogin");
+  }
+  Reservation.findOne({where:{CustomerId:req.session.userId}
+  ,include:[Owner,Customer]}).then((userdata) => {
+    // if(!Customer.Reservation){
+    //   res.json(userdata)
+    // }
+    const hbsData = userdata.toJSON();
+    res.render("userview2-2",hbsData);
+})
+})
+
+router.get("/reservation", (req, res) => {
   if (!req.session.userId) {
    res.redirect("/customerLogin");
   }
