@@ -35,7 +35,7 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
    
   };
   console.log(customerInput)
-  fetch("/api/owner/search", {
+  fetch("/restaurant", {
     method: "POST",
     body: JSON.stringify(customerInput),
     headers: {
