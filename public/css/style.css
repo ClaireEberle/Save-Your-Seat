@@ -184,7 +184,8 @@ flex-wrap:wrap;
 }
 
 .owner-table td, .owner-table th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+  border: 1px solid #060000;
   padding: 8px;
 }
 .owner-table tr:nth-child(even){
