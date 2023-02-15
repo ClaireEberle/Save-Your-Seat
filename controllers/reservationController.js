@@ -27,6 +27,17 @@ router.get("/user", (req, res) => {
     });
 });
 
+router.get("/dish",(req,res)=>{
+  Reservation.findOne({
+    where:{CustomerId: req.session.userId},
+    include:[{all:true, nested:true}]
+  }).then((reservationData)=>{
+    res.json(reservationData);
+  }).catch((err)=>{
+    log(err);
+  res.status(500).json({msg:err})
+})
+});
 router.get("/:id", (req, res) => {
   Reservation.findByPk(req.params.id, { include: [Customer, Owner] })
     .then((reservationData) => {
