@@ -1,11 +1,7 @@
 <main class="userview-form">
 
 <h1>Current reservations:</h1>
-<div>
-  
-    {{!-- {{#if Reservations}}
-    <p>You have no reservations</p>
-    {{/if}} --}}
+
     <table class="owner-table">
     <tr>
         <th>Date</th>
@@ -13,12 +9,17 @@
         <th>Party Size</th>
     </tr>
     <tr>
+        <div>
     {{#each Reservations}}
     <td>{{reservation_date}}</td>
     <td>{{reservation_time}}</td>
     <td>{{party_size}}</td>
     {{/each}}
-    
+        </div>
+        </tr>
+    </table>
+<div>
+<button class="form-btn" id="resProfileBtn">Return to profile</button>
 </div>
 </main>
 <script src="/js/view3-2-1.js"></script>

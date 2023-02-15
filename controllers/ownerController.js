@@ -29,11 +29,13 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(req.body)
   Owner.create(req.body)
     .then((ownerData) => {
       req.session.ownerId = ownerData.id
       req.session.ownerEmail = ownerData.email;
       res.json(ownerData);
+      // create time
     })
     .catch((err) => {
       console.log(err);
@@ -43,11 +45,10 @@ router.post("/", (req, res) => {
 
 router.post("/search", (req, res) => {
    Owner.findOne({
-     where: { restaurant_name: req.body.restaurant_name },
-     include: [Time],
+     where: { restaurant_name: req.body.restaurant_name }
    })
      .then((ownerData) => {
-       render("userview2-1", ownerData)
+      res.json(ownerData)
      })
      .catch((err) => {
        console.log(err);

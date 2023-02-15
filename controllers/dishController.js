@@ -44,6 +44,24 @@ router.get("/",(req,res)=>{
      )
  } )
 
+ router.delete("/:id",(req,res)=>{
+   if(!req.session.ownerId){
+      return res.status(403).json({msg:"login first"})
+   }
+      Dish.destroy({
+       where:{
+          id:req.params.id,
+       }
+      }).then(dishData=>{
+        res.json(dishData)
+       }).catch(err=>{
+        console.log(err);
+        res.status(500).json({msg:"something went wrong",err})
+       })
+   })
+
+
+
 // router.put("/editdish", (req,res)=>{
 //     if(!req.session.ownerId){
 //         return res.status(403).json({msg:"you must login before editing dishes"})

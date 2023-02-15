@@ -4,9 +4,9 @@ const {Dish} = require('../models');
 
 const dishData = [
     {
-        dishes: "apples",
-        side: "caramel",
-        MenuId: 1
+        dishes: "Steak",
+        side: "Salad",
+        OwnerId: 1
     },
     {
         dishes: "pears",

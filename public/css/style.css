@@ -69,15 +69,51 @@ footer{
 }
 
 .nav-bar-a{
-  color:var(--whitefont-color);
-  padding-right: 20px;
-  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight: 100;
+  /* background:var(--redbtn-background-color);
+  border: 1px solid var(--redbtn-background-color);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box; */
+  /* color: #FFFFFF; */
+  cursor: pointer;
+  color: var(--redbtn-background-color);
+  /* font-family: 'Dancing Script', cursive; */
+
+  font-size: 18px;
+  /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
+  text-align: center;
+  /* text-decoration: none; */
 }
+.nav-bar-a:link{
+  
+}
+
 .nav-bar-b{
   color:var(--whitefont-color);
   float:right;
-  padding-right: 20px;
+  /* padding-right: 20px; */
+  margin-left: 2px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight: 100;
+  /* background:var(--redbtn-background-color);
+  border: 1px solid var(--redbtn-background-color);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box; */
+  /* color: #FFFFFF; */
+  color: var(--redbtn-background-color);
+  /* font-family: 'Dancing Script', cursive; */
+  cursor: pointer;
+  font-size: 18px;
+  /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
+  text-align: center;
+  /* text-decoration: none; */
 }
+
 
 #userview-1-choice{
     display: flex;
@@ -152,9 +188,14 @@ flex-wrap:wrap;
   padding: 8px;
 }
 .owner-table tr:nth-child(even){
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
+  background-color: #3f3d3d;
+
 }
-.owner-table tr:hover {background-color: #ddd;}
+.owner-table tr:hover {
+  /* background-color: #ddd;  */
+  background-color: #5f5c5c;
+}
 .owner-table th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -164,6 +205,7 @@ flex-wrap:wrap;
 }
 .owner-table td{
   text-align: center;
+  color: #ffffff;
 }
 
 .form-btn {
@@ -190,6 +232,19 @@ flex-wrap:wrap;
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+}
+
+.delBtn {
+background: var(--redbtn-background-color);
+border: 1px solid var(--redbtn-background-color);
+color: #FFFFFF;
+border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  /* box-sizing: border-box; */
+  cursor: pointer;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  padding:1px;
+  font-weight: 600;
 }
 
 .form-btn:hover,
