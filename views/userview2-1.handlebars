@@ -18,8 +18,8 @@
   <input type="text" id="datepicker" />
   <p id="alertmsg"></p>
   <div class="time-slot" id="available-time">
-    {{#each Owner.Time}}
-    <button class="form-btn">{{Owner.Time.time_vailable}}</button>
+    {{#each Time}}
+    <button class="form-btn">{{Time.time_available}}</button>
     {{/each}}
   </div>
   <div id="picked-time-div">

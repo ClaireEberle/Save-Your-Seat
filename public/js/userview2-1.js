@@ -3,7 +3,7 @@ let today = new Date();
 let alertMsg = document.querySelector("#alertmsg");
 let makeReservationForm = document.querySelector("#make-reservation-form");
 let pickedTimeDiv = document.querySelector("#picked-time-div");
-var restaurantId ="";
+var restaurantId = "";
 
 //*find time button
 document.querySelector("#findtime").addEventListener("click", (e) => {
@@ -12,7 +12,7 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   let pickedRestaurant = document.querySelector("#restaurant").value;
   let inputDate = document.querySelector("#datepicker").value;
   let pickedDate = new Date(inputDate);
-  console.log(pickedRestaurant)
+  console.log(pickedRestaurant);
   if (alertMsg.textContent) {
     alertMsg.textContent = "";
   }
@@ -30,10 +30,11 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
   }
   makeReservationForm.append(alertMsg);
   // if (document.querySelector("#datepicker").value<today.()) {
-  const customerInput = { 
+  const customerInput = {
     restaurant_name: pickedRestaurant,
+    date: inputDate,
   };
-  console.log(customerInput)
+  // console.log(customerInput);
   fetch("/restaurant", {
     method: "POST",
     body: JSON.stringify(customerInput),
@@ -41,31 +42,34 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => { 
-      if (res.ok) {
-        return;
-      } else {
-        alert("something is wrong. can't fine anything");
-      }
-    // .then((ownerdata) => {
-      // console.log(ownerdata)
-      // let openTime = parseInt(ownerdata.open_time, 10);
-      // let closeTime = parseInt(ownerdata.close_time, 10);
-      // restaurantId = ownerdata.id
-      // for (var i = openTime; i < closeTime; i++) {
-      //   var timeSlotBtn = document.createElement("button");
-      //   timeSlotBtn.textContent = i.toString() + ":00";
-      //   timeSlotBtn.classList.add("form-btn", "time-slot-btn");
-      //   availableTimeDiv.append(timeSlotBtn);
-      // }
+    .then((res) => res.json())
+    .then((data) => {
+      const customerInput2 = {
+        OwnerId: data.OwnerId,
+        date: inputDate,
+      };
+      console.log(customerInput2)
+      fetch("/time", {
+        method: "POST",
+        body: JSON.stringify(customerInput2),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        if (res.ok) {
+          return;
+        } else {
+          alert("something is wrong. can't fine anything");
+        }
+      });
     })
     .then(() => {
       availableTimeDiv.addEventListener("click", (e) => {
         console.log;
         e.preventDefault();
         if (e.target.matches("button")) {
-          let selectedTime= document.querySelector("#selected-time");
-          selectedTime.textContent = e.target.textContent
+          let selectedTime = document.querySelector("#selected-time");
+          selectedTime.textContent = e.target.textContent;
         }
       });
     })
@@ -75,12 +79,12 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
       confirmResvBtn.classList.add("form-btn");
       makeReservationForm.append(confirmResvBtn);
       confirmResvBtn.addEventListener("click", () => {
-        let selectedTime =document.querySelector("#selected-time").textContent;
+        let selectedTime = document.querySelector("#selected-time").textContent;
         const resvObj = {
           reservation_date: inputDate,
           reservation_time: selectedTime,
           party_size: partySize,
-          OwnerId:restaurantId
+          OwnerId: restaurantId,
         };
         fetch("/api/reservation", {
           method: "POST",
@@ -88,15 +92,15 @@ document.querySelector("#findtime").addEventListener("click", (e) => {
           headers: {
             "Content-Type": "application/json",
           },
-        }).then((res) => res.json()).then((reservationData)=>{
-          // sendEmail(reservationData)
-          location.href = "/makereservation/confirmed";
         })
+          .then((res) => res.json())
+          .then((reservationData) => {
+            // sendEmail(reservationData)
+            location.href = "/makereservation/confirmed";
+          });
       });
     });
 });
-
-
 
 //Jquery function
 //* datepicker
