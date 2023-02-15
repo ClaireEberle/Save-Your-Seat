@@ -5,30 +5,31 @@
     <tr>
         <th>Main Dish</th>
         <th>Side</th>
-        <th>Edit</th>
+        <th>Remove</th>
     </tr>
     <tr>
+        <div>
     {{#each Dishes}}
     <td>{{dishes}}</td>
     <td>{{side}}</td>
-    <td><button id="show-edit-form">edit</button></td>
-    <div class="hide" id="menu-edit">
-    <form  id="edit-menu">
-        <input type="text" id="editDish" value="{{dishes}}"/>
-        <input type="text" id="editSide" value="{{side}}"/>
-        <button id="save-dish">Save Changes</button>
-    </form>
-    </div>
+    
+     <td class="tbleBtn"><button class="delBtn" id="{{id}}">remove</button></td>
     </tr>
     {{/each}}
+        </div>
 </table>
-    <button id="add-dish">Add item to menu</button>
+
+    <button class="form-btn" id="add-dish">Add item to menu</button>
     <div class="hide" id="dish-form-div">
     <form id="add-dish-form">
         <input type="text" id="addDish" placeholder="new dish"/>
         <input type="text" id="addSide" placeholder="new side"/>
-        <button id="save-new-dish">Save New Dish</button>
+        <button class="form-btn" id="save-new-dish">Save New Dish</button>
+    
     </form>
+         <button class="form-btn" id="cancel-new-dish">Cancel</button>
     </div>
+    <button class="form-btn" id="menuProfileBtn">Return to profile</button>
 </main>
+
 <script src="/js/view3-2-2.js"></script>

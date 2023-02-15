@@ -1,0 +1,26 @@
+<main class="userview-form">
+
+<h1>{{restaurant_name}}'s Menu</h1>
+<table class="owner-table">
+    <tr>
+        <th>order #</th>
+        <th>Main Dish</th>
+        <th>Side</th>
+    </tr>
+    <tr>
+        <div>
+    {{#each Dishes}}
+    <td>{{id}}</td>
+    <td>{{dishes}}</td>
+    <td>{{side}}</td>
+    
+        </tr>
+    {{/each}}
+        </div>
+</table>
+
+    <button class="form-btn" id="menu-return">return to profile</button>
+    
+</main>
+
+<script src="/js/userview3-1.js"></script>

@@ -14,7 +14,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  Reservation.findByPk(req.session.userId, { include: [Owner] })
+  Reservation.findOne({
+    where: { CustomerId: req.session.userId },
+    include: [Customer, Owner],
+  })
     .then((reservationData) => {
       res.json(reservationData);
     })
@@ -24,6 +27,17 @@ router.get("/user", (req, res) => {
     });
 });
 
+router.get("/dish",(req,res)=>{
+  Reservation.findOne({
+    where:{CustomerId: req.session.userId},
+    include:[{all:true, nested:true}]
+  }).then((reservationData)=>{
+    res.json(reservationData);
+  }).catch((err)=>{
+    log(err);
+  res.status(500).json({msg:err})
+})
+});
 router.get("/:id", (req, res) => {
   Reservation.findByPk(req.params.id, { include: [Customer, Owner] })
     .then((reservationData) => {
@@ -62,24 +76,22 @@ router.post("/", (req, res) => {
 // WILL PROTECTED THIS ROUTE LATER
 
 router.delete("/", (req, res) => {
-  // if(!req.session.userId){
-  //    return res.status(403).json({msg:"login first post"})
-  // }
-  Reservation.findByPk(req.session.userId)
+  if (!req.session.userId) {
+    return res.status(403).json({ msg: "login first post" });
+  }
+  Reservation.findOne({where:{CustomerId:req.session.userId}})
     .then((reservationData) => {
       if (!reservationData) {
         return res.status(404).json({ msg: "no such reservation" });
       }
-      // else if(reservationData.UserId!== req.session.userId){
-      //    return res.status(403).json({msg:"not your chirp!"})
-      // }
+      console.log(reservationData);
       Reservation.destroy({
         where: {
-          id: req.session.userId,
+          CustomerId: req.session.userId,
         },
       })
         .then((reservationData) => {
-          res.json(chirpData);
+          res.json(reservationData);
         })
         .catch((err) => {
           console.log(err);

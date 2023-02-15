@@ -7,8 +7,6 @@ document.querySelector("#restSignupForm").addEventListener("submit",e=>{
         table_capacity:document.querySelector("#maxtable").value,
         email:document.querySelector("#restSignupEmail").value,
         password:document.querySelector("#restSignupPassword").value
-       
-        
     }
     fetch("/api/owner/",{ 
         method:"POST",
@@ -19,7 +17,7 @@ document.querySelector("#restSignupForm").addEventListener("submit",e=>{
     }).then(res=>{
         if(res.ok){
             alert("Welcome! You have created a profile");
-            location.href="/restaurantLogin"
+            location.href="/restaurants"
         }else{
             console.log(restSignupObj);
             alert("wrong email or password")

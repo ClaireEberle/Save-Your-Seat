@@ -1,6 +1,7 @@
 :root{
     --redbtn-background-color:#c1121f;
     --whitefont-color:#ffffff;
+    --dark-color:#191b1c;
 }
 
 *{
@@ -10,25 +11,109 @@
     font-family: sans-serif;
 }
 
+body{
+  background-image:url(../css/backgrond.jpg);
+  background-size: cover;
+  background-position: center;
+  padding:0;
+
+}
+
+main{
+ position:relative;
+ height: 100%;
+}
+
 header{
     font-family: 'Dancing Script', cursive;
     font-size:500%;
     border-bottom:3px solid var(--redbtn-background-color);
     text-align: center;
-    padding:2%;
+    padding:1%;
+    background-color:var(--dark-color);
+    color: var(--whitefont-color);
+    
+}
+
+footer{
+  font-family: 'Dancing Script', cursive;
+  font-size:500%;
+  border-top:3px solid var(--redbtn-background-color);
+  text-align: center;
+  background-color:var(--whitefont-color);
+  text-align: center;
+  /* padding:1%; */
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
+  padding-top:5px;
+  background-color:var(--dark-color);
+}
+
+.alert-msg{
+  color:var(--redbtn-background-color);
 }
 
 .nav-bar{
   text-align: left;
-  font-size: 18%;
+  font-size: 20%;
+  color:var(--whitefont-color);
+}
+
+.footer-a{
+  font-size: 20%;
+  color:var(--whitefont-color);
+  /* padding-top: 10%; */
 }
 
 .nav-bar-a{
   padding-right: 10px;
+  padding-left: 10px;
+  font-weight: 100;
+  /* background:var(--redbtn-background-color);
+  border: 1px solid var(--redbtn-background-color);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box; */
+  /* color: #FFFFFF; */
+  cursor: pointer;
+  color: var(--redbtn-background-color);
+  /* font-family: 'Dancing Script', cursive; */
+
+  font-size: 18px;
+  /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
+  text-align: center;
+  /* text-decoration: none; */
 }
+.nav-bar-a:link{
+  
+}
+
 .nav-bar-b{
+  color:var(--whitefont-color);
   float:right;
+  /* padding-right: 20px; */
+  margin-left: 2px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight: 100;
+  /* background:var(--redbtn-background-color);
+  border: 1px solid var(--redbtn-background-color);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box; */
+  /* color: #FFFFFF; */
+  color: var(--redbtn-background-color);
+  /* font-family: 'Dancing Script', cursive; */
+  cursor: pointer;
+  font-size: 18px;
+  /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
+  text-align: center;
+  /* text-decoration: none; */
 }
+
 
 #userview-1-choice{
     display: flex;
@@ -44,17 +129,20 @@ header{
 }
 
 .userview-form{
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
+    background-color: var(--dark-color);
+    border: 1px solid #5a6063;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 5%;
     line-height: 3em;
     padding:2em;
     height:max-content;
+    margin-bottom: 5%;
+    color: var(--whitefont-color);
 }
 
 .time-slot{
@@ -96,13 +184,19 @@ flex-wrap:wrap;
 }
 
 .owner-table td, .owner-table th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+  border: 1px solid #060000;
   padding: 8px;
 }
 .owner-table tr:nth-child(even){
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
+  background-color: #3f3d3d;
+
 }
-.owner-table tr:hover {background-color: #ddd;}
+.owner-table tr:hover {
+  /* background-color: #ddd;  */
+  background-color: #5f5c5c;
+}
 .owner-table th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -112,6 +206,7 @@ flex-wrap:wrap;
 }
 .owner-table td{
   text-align: center;
+  color: #ffffff;
 }
 
 .form-btn {
@@ -140,6 +235,19 @@ flex-wrap:wrap;
   vertical-align: middle;
 }
 
+.delBtn {
+background: var(--redbtn-background-color);
+border: 1px solid var(--redbtn-background-color);
+color: #FFFFFF;
+border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  /* box-sizing: border-box; */
+  cursor: pointer;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  padding:1px;
+  font-weight: 600;
+}
+
 .form-btn:hover,
 .form-btn:active {
   background-color: initial;
@@ -152,7 +260,6 @@ flex-wrap:wrap;
 }
 
 .userview-form:hover {
-  border-color: #dadce0;
+  border-color: #191b1c;
   box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
-  color: #202124;
 }
