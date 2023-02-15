@@ -48,11 +48,11 @@ The following animation demonstrates the application functionality:
 ![Make reservation (2)](https://user-images.githubusercontent.com/67940686/218874939-4e21badc-02b1-45e3-b7d0-a8d0fe463af3.gif)
 
 ## Contributing
-Team 9 Project 2 
-Yanqing Lou   | Project Manager
-Claire Eberle | Views
-Heiu Nguyen   | Controllers
-Sidney Basa   | Models
+Team 9 Project 2 <br>
+Yanqing Lou   | Project Manager <br>
+Claire Eberle | Views <br>
+Heiu Nguyen   | Controllers <br>
+Sidney Basa   | Models <br>
 UW Coding Bootcamp (c) 2023
 
 ## Installation
@@ -68,20 +68,20 @@ Step 8: In the terminal window, install the node package mamanger by typing npm 
 Step 9: Now run the program, in the termnial type node server.js <br>
 
 ## Usage
-This program is accessible from the web browser
-Step 1: Open a web browser
-Step 2: In the address bar type localhost:3000
-Step 3: The page Make a Reservation should load
-Step 4: If this is your first time visiting the page, sign up as a new cutomer
-Step 5: Then follow the prompts to create a reservation
-Step 6: If this is your first time visiting the page as an owner, sign up as an owner
-Step 7: Then follow the prompts to create a restaurant, add hours open and tables available
+This program is accessible from the web browser <br>
+Step 1: Open a web browser <br>
+Step 2: In the address bar type localhost:3000 <br>
+Step 3: The page Make a Reservation should load <br>
+Step 4: If this is your first time visiting the page, sign up as a new cutomer <br>
+Step 5: Then follow the prompts to create a reservation <br>
+Step 6: If this is your first time visiting the page as an owner, sign up as an owner <br>
+Step 7: Then follow the prompts to create a restaurant, add hours open and tables available <br>
 
 ## License
 MIT License
 
 ## Review
-* The URL of the deployed application
+* The URL of the deployed application <br>
 https://make-reservation.herokuapp.com/
-* The URL of the GitHub repository, with a unique name and a README describing the project
+* The URL of the GitHub repository, with a unique name and a README describing the project <br>
 https://github.com/ClaireEberle/Save-Your-Seat
