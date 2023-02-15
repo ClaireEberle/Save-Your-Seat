@@ -82,7 +82,7 @@ footer{
   color: var(--redbtn-background-color);
   /* font-family: 'Dancing Script', cursive; */
 
-  font-size: 20px;
+  font-size: 18px;
   /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
   text-align: center;
   /* text-decoration: none; */
@@ -108,7 +108,7 @@ footer{
   color: var(--redbtn-background-color);
   /* font-family: 'Dancing Script', cursive; */
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
   text-align: center;
   /* text-decoration: none; */
