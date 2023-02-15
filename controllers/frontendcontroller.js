@@ -30,30 +30,32 @@ router.get("/makereservation/confirmed", (req, res) => {
 
 router.get("/seeallreservation", (req, res) => {
   if (!req.session.userId) {
-   res.redirect("/customerLogin");
+    res.redirect("/customerLogin");
   }
-  Reservation.findAll({where:{CustomerId:req.session.userId}
-  ,include:[Owner,Customer]}).then((userdata) => {
+  Reservation.findAll({
+    where: { CustomerId: req.session.userId }
+    , include: [Owner, Customer]
+  }).then((userdata) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
     const hbsData = userdata.toJSON();
-    res.render("seeallreservation",hbsData);
-})
+    res.render("seeallreservation", hbsData);
+  })
 })
 
 router.get("/seereservation/:id", (req, res) => {
   if (!req.session.userId) {
-   res.redirect("/customerLogin");
+    res.redirect("/customerLogin");
   }
   Reservation.findByPk(req.params.id
-  ,{include:[Owner,Customer]}).then((userdata) => {
-    // if(!Customer.Reservation){
-    //   res.json(userdata)
-    // }
-    const hbsData = userdata.toJSON();
-    res.render("userview2-2",hbsData);
-})
+    , { include: [Owner, Customer] }).then((userdata) => {
+      // if(!Customer.Reservation){
+      //   res.json(userdata)
+      // }
+      const hbsData = userdata.toJSON();
+      res.render("userview2-2", hbsData);
+    })
 })
 
 router.get("/reservation", (req, res) => {
@@ -183,41 +185,33 @@ router.get("/updateTables", (req, res) => {
 // 	"CustomerId": req.session.userId
 // }
 
-
-router.post("/makereservation", (req, res) => {
-  Reservation.findAll({
+router.post("/makereservation", async (req, res) => {
+  const reservation = await Reservation.findAll({
     where: {
       reservation_date: req.body.reservation_date,
       reservation_time: req.body.reservation_time,
-    },
-  }).then((reservationData) => {
-    Owner.findOne({
+    }
+  })
+  const owner = await Owner.findOne({
       where: {
-        id: req.body.OwnerID,
-      },
-    }).then((Ownerdata) => {
-      if (reservationData.length < Ownerdata.table_capacity) {
-        Reservation.create(req.body)
-          .then((reservationData) => {
-            res.json(reservationData);
-          })
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json({ msg: err });
-          });
+        id: req.body.OwnerId
       }
-      if (reservationData.length == Ownerdata.table_capacity) {
-        Time.destroy({
+  })
+  if (reservation.length < owner.table_capacity) {
+    const newReservation = await Reservation.create(req.body)
+    res.json(newReservation)
+  }
+  else if (reservation.length == owner.table_capacity) {
+    const timeRemove = await Time.destroy({
           where: {
             date: req.body.reservation_date,
             time_available: req.body.reservation_time,
-          },
-        });
-        res.json({ msg: "Please choose different time" });
-      }
-    });
-  });
-});
+          }
+    })
+    res.json({ msg: 'Please choose different time' })
+    }
+})
+
 
 /* req.body should look like this...
     {
@@ -226,46 +220,37 @@ router.post("/makereservation", (req, res) => {
     }
   */
 
-router.post("/restaurant", (req, res) => {
-  Owner.findOne({
+router.post("/restaurant", async (req, res) => {
+  const owner = await Owner.findOne({ where: { restaurant_name: req.body.restaurant_name } })
+  console.log('Owner', owner.dataValues.id)
+  openTime = parseInt(owner.open_time);
+  closeTime = parseInt(owner.close_time)
+  let time_slot = [];
+  for (let i = openTime; i < closeTime; i++) {
+    time_slot.push(i.toString() + ":00")
+  }
+  let timeArray = [];
+  const time = await Time.findAll({
     where: {
-      restaurant_name : req.body.restaurant_name
+      date: req.body.date,
+      OwnerId: owner.dataValues.id
+    }
+  })
+  for(let i = 0; i < time.length; i++){
+    timeArray.push(time[i])
+  }
+  if (time.length == 0) {
+    for (let i = 0; i < time_slot.length; i++) {
+      const newTime = await Time.create({
+        time_available: time_slot[i],
+        date: req.body.date,
+        OwnerId: owner.dataValues.id
+      })
+      timeArray.push(newTime.dataValues);
 
     }
-  }).then((data)=>{
-    // console.log('Owner',data.dataValues.id)
-    openTime = parseInt(data.open_time);
-    closeTime = parseInt(data.close_time);
-    let time_slot = [];
-    for (let i = openTime; i < closeTime; i++) {
-      time_slot.push(i.toString() + ":00");
-    }
-    res.json(data)
-    // console.log(time_slot)
-    Time.findAll({
-      where: {
-        date: req.body.date,
-        OwnerId : data.dataValues.id
-      }
-    }).then((Timedata)=>{
-      if(Timedata.length > 0){
-        console.log("==========")
-        console.log(Timedata.length)
-        const hbsData = Timedata.toJSON();
-        res.render("userview2-1", hbsData)
-        res.json(Timedata)
-      }else {
-        time_slot.forEach(element =>{
-          Time.create({
-            time_available: element,
-            date: req.body.date,
-            OwnerId : data.dataValues.id
-          })
-        })
-      }
-    })
-    
-  })
+  } 
+  res.json(timeArray)
 })
 
 // req.body should look like this
@@ -277,31 +262,19 @@ router.post("/restaurant", (req, res) => {
 router.post("/time", (req, res) => {
   Time.findAll(
     {
-    where:{
-      date : req.body.date,
-      OwnerId : req.body.OwnerId
+      where: {
+        date: req.body.date,
+        OwnerId: req.body.OwnerId
+      }
     }
-  }
   )
     .then((userData) => {
-      res.render("userview2-1",userData)
+      res.render("userview2-1", userData)
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json({ msg: err });
     });
 });
-
-// router.post("/time", (req, res) => {
-//   Time.create(req.body)
-//   .then((userData) => {
-//     res.json(userData);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//     res.status(500).json({ msg: err });
-//   });
-// });
-
 
 module.exports = router;
