@@ -1,21 +1,20 @@
 <main class="userview-form">
 
-<h1>{{Owners.restaurant_name}}'s Menu</h1>
+<h1>{{restaurant_name}}'s Menu</h1>
 <table class="owner-table">
     <tr>
+        <th>order #</th>
         <th>Main Dish</th>
         <th>Side</th>
-        <th>Remove</th>
     </tr>
     <tr>
         <div>
     {{#each Dishes}}
+    <td>{{id}}</td>
     <td>{{dishes}}</td>
     <td>{{side}}</td>
     
-     <td class="tbleBtn"><button class="delBtn" id="{{id}}">remove</button></td>
-
-    </tr>
+        </tr>
     {{/each}}
         </div>
 </table>

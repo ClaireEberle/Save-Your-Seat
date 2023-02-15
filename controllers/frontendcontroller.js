@@ -126,15 +126,21 @@ router.get("/viewReservations", (req, res) => {
 
 router.get("/menu", (req, res) => {
   if (!req.session.userId) {
-    return res.redirect("/restaurantLogin");
+    return res.redirect("/customerLogin");
   }
-  Customer.findByPk(req.session.userId, {
-    include: [Reservation],
+  Customer.findByPk(req.session.userId,{
+    include:[{all:true,nested:true}]
   }).then((userData)=>{
     const hbsData = userData.toJSON();
-    res.render("userview3-1", hbsData)
+    const Ownerdata = hbsData.Reservations[0].Owner
+    const Dishdata = hbsData.Reservations[0].Owner.Dishes
+    console.log(Dishdata)
+    console.log(Ownerdata)
+
+    res.render("userview3-1", Ownerdata)
   });
-});
+})
+
 
 router.get("/updateMenu", (req, res) => {
   if (!req.session.ownerId) {
