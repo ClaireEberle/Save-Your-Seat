@@ -2,24 +2,26 @@
   <h2 class="form-h2">Here is your current reservation</h2>
   <session class="restaurant-profile" id="restaurant-profile">
     <img class="restaurant-pic" src="js/Restaurant-profile-pic.jpeg" />
-    <h3>{{Owner.restaurant_name}}</h3>
+    <h3 id="restaurant-name">{{Owner.restaurant_name}}</h3>
   </session>
   <div class="reservation-form" id="reservation-form">
     <p>Customer Name:</p>
-    <p><strong>{{Customer.name}}</strong></p>
+    <p id="customer_name"><strong>{{Customer.name}}</strong></p>
     <p>Customer Email:</p>
-    <p><strong>{{Customer.email}}</strong></p>
+    <p id="email"><strong>{{Customer.email}}</strong></p>
     <p>Party Size:</p>
-    <p><strong>{{party_size}}</strong></p>
+    <p id="party_size"><strong>{{party_size}}</strong></p>
     <p>Date:</p>
-    <p><strong>{{reservation_date}}</strong></p>
+    <p id="date"><strong>{{reservation_date}}</strong></p>
     <p>Time:</p>
-    <p><strong>{{reservation_time}}</strong></p>
-    <p></p>
+    <p id="time"><strong>{{reservation_time}}</strong></p> 
   </div>
+  <p>{{msg}}</p>
   <button class="form-btn  " id="send-reservation">Send Email</button>
   <button class="form-btn  " id="cancle-reservation">Cancle the Reservation</button>
 
 </div>
 
 <script src="/js/userview2-2.js"></script>
+
+

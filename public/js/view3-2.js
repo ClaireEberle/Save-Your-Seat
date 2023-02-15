@@ -63,14 +63,20 @@ fetch("/api/owner/editTables", {
 }).then(res=>{
     if(res.ok){
         alert("tables have been updated!");
-        location.reload()
+        location.reload();
+    
+        // window.parent.location = window.parent.location.href;
     }else{
         alert("something went wrong")
     }
-})
-document.querySelector("#update-table-form").classList.add("hide");
+}).then(location.reload())
 
 })
+
+document.querySelector("#update-table-form").classList.add("hide");
+
+
+// })
 document.querySelector("#cancelupdateTble").addEventListener("click", (e) => {
     e.preventDefault();
     document.querySelector("#update-table-form").classList.add("hide");
@@ -96,11 +102,11 @@ fetch("/api/owner/editTime", {
 }).then(res=>{
     if(res.ok){
         // alert("Business hours have been updated!");
-        href="/restaurants"
+       location.reload();
     }else{
         alert("something went wrong")
     }
-})
+}).then(location.reload())
 document.querySelector("#update-hours-form").classList.add("hide");
 href="/restaurants"
 

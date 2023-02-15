@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Make reservation</title>
+    <title>Save your seat</title>
     <link
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
@@ -19,17 +19,23 @@
   <body>
     <header>
       <div class="nav-bar">
-        <a class="nav-bar-a" href="/restaurantLogin">Owner Signin</a>
-        <a class="nav-bar-a" href="/customerLogin">Customer Signin</a>
+        
+        <a class="nav-bar-a" href="/restaurantLogin">Owner Sign-in</a>
+        <a class="nav-bar-a" href="/customerLogin">Customer Sign-in</a>
+        {{! TODO Menu link }}
         <a id="logout" class="nav-bar-b" href="/">Logout</a>
+        <a class="nav-bar-b" href="/customerLogin">Menu</a>
       </div>
-      Make the Reservation
+      Save your Seat
     </header>
     <main>
+
       {{{body}}}
 
     </main>
-    <footer></footer>
+    <footer>
+      <a class="footer-a">🍴Contact us: makeonereservation@outlook.com🍴</a>
+    </footer>
 
     <script src="/js/main.js"></script>
   </body>
