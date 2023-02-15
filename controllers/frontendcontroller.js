@@ -120,7 +120,10 @@ router.get("/viewReservations", (req, res) => {
     // }
     const hbsData = ownerData.toJSON();
     console.log(hbsData);
-    res.render("view3-2-1", hbsData);
+    res.render("view3-2-1", {
+      hbsData:hbsData,
+      hasRes:hbsData.Reservations[0]
+    });
   });
 });
 
