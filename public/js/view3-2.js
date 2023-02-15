@@ -62,13 +62,16 @@ fetch("/api/owner/editTables", {
     }
 }).then(res=>{
     if(res.ok){
-        alert("tables have been updated!");
-        location.reload()
+        // alert("tables have been updated!");
+        // location.reload()
+        // window.parent.location = window.parent.location.href;
     }else{
         alert("something went wrong")
     }
 })
+
 document.querySelector("#update-table-form").classList.add("hide");
+
 
 })
 document.querySelector("#cancelupdateTble").addEventListener("click", (e) => {
