@@ -7,7 +7,7 @@ router.get("/makereservation", (req, res) => {
     const hbsOwner = ownerData.map((owner) => owner.toJSON());
     console.log(hbsOwner);
     res.render("userview2-1", { Owner: hbsOwner });
-  });
+  })
 });
 
 router.get("/reservation", (req, res) => {
@@ -185,32 +185,32 @@ router.get("/updateTables", (req, res) => {
 // 	"CustomerId": req.session.userId
 // }
 
-router.post("/makereservation", async (req, res) => {
-  const reservation = await Reservation.findAll({
-    where: {
-      reservation_date: req.body.reservation_date,
-      reservation_time: req.body.reservation_time,
-    }
-  })
-  const owner = await Owner.findOne({
-      where: {
-        id: req.body.OwnerId
-      }
-  })
-  if (reservation.length < owner.table_capacity) {
-    const newReservation = await Reservation.create(req.body)
-    res.json(newReservation)
-  }
-  else if (reservation.length == owner.table_capacity) {
-    const timeRemove = await Time.destroy({
-          where: {
-            date: req.body.reservation_date,
-            time_available: req.body.reservation_time,
-          }
-    })
-    res.json({ msg: 'Please choose different time' })
-    }
-})
+// router.post("/makereservation", async (req, res) => {
+//   const reservation = await Reservation.findAll({
+//     where: {
+//       reservation_date: req.body.reservation_date,
+//       reservation_time: req.body.reservation_time,
+//     }
+//   })
+//   const owner = await Owner.findOne({
+//       where: {
+//         id: req.body.OwnerId
+//       }
+//   })
+//   if (reservation.length < owner.table_capacity) {
+//     const newReservation = await Reservation.create(req.body)
+//     res.json(newReservation)
+//   }
+//   else if (reservation.length == owner.table_capacity) {
+//     const timeRemove = await Time.destroy({
+//           where: {
+//             date: req.body.reservation_date,
+//             time_available: req.body.reservation_time,
+//           }
+//     })
+//     res.json({ msg: 'Please choose different time' })
+//     }
+// })
 
 
 /* req.body should look like this...
@@ -220,38 +220,7 @@ router.post("/makereservation", async (req, res) => {
     }
   */
 
-router.post("/restaurant", async (req, res) => {
-  const owner = await Owner.findOne({ where: { restaurant_name: req.body.restaurant_name } })
-  console.log('Owner', owner.dataValues.id)
-  openTime = parseInt(owner.open_time);
-  closeTime = parseInt(owner.close_time)
-  let time_slot = [];
-  for (let i = openTime; i < closeTime; i++) {
-    time_slot.push(i.toString() + ":00")
-  }
-  let timeArray = [];
-  const time = await Time.findAll({
-    where: {
-      date: req.body.date,
-      OwnerId: owner.dataValues.id
-    }
-  })
-  for(let i = 0; i < time.length; i++){
-    timeArray.push(time[i])
-  }
-  if (time.length == 0) {
-    for (let i = 0; i < time_slot.length; i++) {
-      const newTime = await Time.create({
-        time_available: time_slot[i],
-        date: req.body.date,
-        OwnerId: owner.dataValues.id
-      })
-      timeArray.push(newTime.dataValues);
 
-    }
-  } 
-  res.json(timeArray)
-})
 
 // req.body should look like this
 // {
