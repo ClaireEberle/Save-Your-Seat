@@ -1,10 +1,10 @@
 <div class="userview-form">
-<h2>Welcome {{name}}, </h2>
-<h3>Here is all your reservation:</h3>
+  <h2>Welcome {{name}}, </h2>
+  <h3>Here is all your reservation:</h3>
     {{#each Reservation}}
-    <btn class="form-btn">{{Reservation.id}}.{{Reservation.reservation_date}} {{Reservation.reservation_time}}</btn>
+      <a name={{Reservation.id}}>{{Reservation.reservation_date}} 
+        {{Reservation.reservation_time}}</a>
     {{/each}}
 </div>
-
 
 <script src="/js/userview1.js"></script>

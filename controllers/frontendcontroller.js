@@ -41,12 +41,12 @@ router.get("/seeallreservation", (req, res) => {
 })
 })
 
-router.get("/seereservation", (req, res) => {
+router.get("/seereservation/:id", (req, res) => {
   if (!req.session.userId) {
    res.redirect("/customerLogin");
   }
-  Reservation.findOne({where:{CustomerId:req.session.userId}
-  ,include:[Owner,Customer]}).then((userdata) => {
+  Reservation.findByPk(req.params.id
+  ,{include:[Owner,Customer]}).then((userdata) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
