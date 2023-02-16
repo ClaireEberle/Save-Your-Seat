@@ -181,6 +181,15 @@ flex-wrap:wrap;
 .hide {
   display: none; 
 }
+.rsv-link{
+  color:var(--whitefont-color);
+  line-height: inherit;
+  border: 1px solid #3f3d3d;
+  padding-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+}
 
 .owner-table {
   border-collapse: collapse;
@@ -266,4 +275,7 @@ border-radius: 6px;
 .userview-form:hover {
   border-color: #191b1c;
   box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+}
+.rsv-link:hover{
+  border: 1px solid var(--whitefont-color);
 }

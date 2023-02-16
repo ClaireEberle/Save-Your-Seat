@@ -1,7 +1,7 @@
 <div class="userview-form">
-  <h3>Here are all your reservation (click to see details):</h3>
+  <h3 class="form-h2">Here are all your reservation (click to see details):</h3>
     {{#each reservation}}
-      <a class = "rsv-link form-btn" name={{id}}>DATE: {{reservation_date}} <br> TIME:
+      <a class = "rsv-link" name={{id}}>DATE: {{reservation_date}} <br> TIME:
         {{reservation_time}} <br> LOCATION: {{Owner.restaurant_name}}</a>
     {{/each}}
 <br>
