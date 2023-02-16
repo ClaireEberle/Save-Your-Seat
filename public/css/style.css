@@ -36,6 +36,7 @@ header{
     padding:1%;
     background-color:var(--dark-color);
     color: var(--whitefont-color);
+    flex-wrap: wrap;
     
 }
 
