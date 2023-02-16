@@ -1,10 +1,12 @@
 <div class="userview-form" id="see-reservation-form">
   <h2 class="form-h2">Here is your current reservation</h2>
   <session class="restaurant-profile" id="restaurant-profile">
-    <img class="restaurant-pic" src="js/Restaurant-profile-pic.jpeg" />
+    <img class="restaurant-pic" src="/css/Restaurant-profile-pic.jpeg" />
     <h3 id="restaurant-name">{{Owner.restaurant_name}}</h3>
   </session>
   <div class="reservation-form" id="reservation-form">
+    <p>Reservation Number:</p>
+    <p id="reservation_number"><strong>{{id}}</strong></p>
     <p>Customer Name:</p>
     <p id="customer_name"><strong>{{Customer.name}}</strong></p>
     <p>Customer Email:</p>
@@ -19,6 +21,7 @@
   <p>{{msg}}</p>
   <button class="form-btn  " id="send-reservation">Send Email</button>
   <button class="form-btn  " id="cancle-reservation">Cancle the Reservation</button>
+  <a class="form-btn" href="/seeallreservation" id="cancle-reservation">See all Reservation</a>
 
 </div>
 

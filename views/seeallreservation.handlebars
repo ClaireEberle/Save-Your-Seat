@@ -1,10 +1,11 @@
 <div class="userview-form">
-  <h2>Welcome {{name}}, </h2>
-  <h3>Here is all your reservation:</h3>
-    {{#each Reservation}}
-      <a name={{Reservation.id}}>{{Reservation.reservation_date}} 
-        {{Reservation.reservation_time}}</a>
+  <h3 class="form-h2">Here are all your reservation (click to see details):</h3>
+    {{#each reservation}}
+      <a class = "rsv-link" name={{id}}>DATE: {{reservation_date}} <br> TIME:
+        {{reservation_time}} <br> LOCATION: {{Owner.restaurant_name}}</a>
     {{/each}}
+<br>
+  <a class="form-btn" href="/customers">Back</a>
 </div>
 
-<script src="/js/userview1.js"></script>
+<script src="/js/seeallreservation.js"></script>
