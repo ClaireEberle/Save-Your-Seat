@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
@@ -20,8 +21,8 @@ router.post('/',(req,res)=>{
         port:587,
         secure:false,
         auth:{
-            user:"makeonereservation@outlook.com",
-            pass:"Team9project2"
+            user:process.env.EMAIL,
+            pass:process.env.EMAIL_PASS
         },
         tls:{
             rejectUnauthorized:false
@@ -29,7 +30,7 @@ router.post('/',(req,res)=>{
     });
     
     const options = {
-        from:"makeonereservation@outlook.com",
+        from:"saveyourseat@outlook.com",
         //TODO:change into user email: req.body.email
         to:req.body.email,
         subject:"Reservation Info",
