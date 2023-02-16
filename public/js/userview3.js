@@ -1,4 +1,5 @@
 let sendEmailBtn = document.querySelector("#send-email-btn");
+let emailMsg = document.querySelector("#email-msg")
 
 sendEmailBtn.addEventListener("click", (e) => {
   fetch("/api/reservation/user", {
@@ -27,7 +28,7 @@ sendEmailBtn.addEventListener("click", (e) => {
         },
       }).then((res) => {
         if (res.ok) {
-          return;
+          emailMsg.textContent="Reservation email has been sent to your email"
         } else {
           alert("email is not sent. Please try agian.");
         }
@@ -39,13 +40,8 @@ document
   .querySelector("#check-reservation-btn")
   .addEventListener("click", (e) => {
     e.preventDefault();
-    location.href = "/seereservation";
+    location.href = "/seeallreservation";
   });
-
-document.querySelector("#cancle-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  location.replace("/makereservation");
-});
 
 document.querySelector("#menu-btn").addEventListener("click", (e) => {
   e.preventDefault();

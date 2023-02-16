@@ -38,6 +38,7 @@ router.get("/dish",(req,res)=>{
   res.status(500).json({msg:err})
 })
 });
+
 router.get("/:id", (req, res) => {
   Reservation.findByPk(req.params.id, { include: [Customer, Owner] })
     .then((reservationData) => {
@@ -75,21 +76,16 @@ router.post("/", (req, res) => {
 // THIS ROUTE IS NOT PROTECTED NON LOG IN USER CAN ALSO ACCESS
 // WILL PROTECTED THIS ROUTE LATER
 
-router.delete("/", (req, res) => {
+router.delete("/:id", (req, res) => {
   if (!req.session.userId) {
-    return res.status(403).json({ msg: "login first post" });
+    return res.status(403).json({ msg: "login first" });
   }
-  Reservation.findOne({where:{CustomerId:req.session.userId}})
+  Reservation.findByPk(req.params.id)
     .then((reservationData) => {
       if (!reservationData) {
         return res.status(404).json({ msg: "no such reservation" });
       }
-      console.log(reservationData);
-      Reservation.destroy({
-        where: {
-          CustomerId: req.session.userId,
-        },
-      })
+      Reservation.destroy({where:{id:req.params.id}})
         .then((reservationData) => {
           res.json(reservationData);
         })

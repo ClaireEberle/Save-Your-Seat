@@ -12,6 +12,7 @@ document.querySelector("#custLoginForm").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
+            alert("Sign in successfully.")
             location.href="/customers"
         }else{
             alert("wrong email or password")
