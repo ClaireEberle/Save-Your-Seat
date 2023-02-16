@@ -123,10 +123,11 @@ router.get("/viewReservations", (req, res) => {
     // }
     const hbsData = ownerData.toJSON();
     console.log(hbsData);
-    res.render("view3-2-1", {
-      hbsData:hbsData,
+    res.render("view3-2-1",{ 
+      owner: hbsData,
       hasRes:hbsData.Reservations[0]
-    });
+    }
+    );
   });
 });
 
@@ -246,5 +247,20 @@ router.post("/time", (req, res) => {
       res.status(500).json({ msg: err });
     });
 });
+
+router.get("/allmenus",(req,res)=>{
+Owner.findAll({
+  include: [Dish],
+}).then((ownerData)=>{
+  const newData = ownerData.map((owner)=>owner.toJSON());
+  console.log(newData);
+  const DishData = newData.Dishes;
+  console.log(DishData)
+  res.render("allmenus", {
+    Owner:newData,
+    dishData:DishData
+  })
+})
+})
 
 module.exports = router;

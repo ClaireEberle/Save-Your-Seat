@@ -1,6 +1,6 @@
 <main class="userview-form">
 
-<h1>Current reservations:</h1>
+<h1>Current reservations: </h1>
 
     <table class="owner-table">
     <tr>
@@ -10,13 +10,13 @@
     </tr>
     <tr>
         <div>
-    {{#each Reservations}}
+    {{#each owner.Reservations}}
     <td>{{reservation_date}}</td>
     <td>{{reservation_time}}</td>
     <td>{{party_size}}</td>
-    {{/each}}
         </div>
         </tr>
+    {{/each}}
     </table>
     {{#if hasRes}}
     <h3></h3>
