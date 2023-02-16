@@ -13,7 +13,7 @@ sendEmailBtn.addEventListener("click", (e) => {
   const emailObj = {
     customer_name: customerName,
     restaurant: restaurantName,
-    data: partyDate,
+    date: partyDate,
     time: partyTime,
     party_size: partySize,
     email: customerEmail,
