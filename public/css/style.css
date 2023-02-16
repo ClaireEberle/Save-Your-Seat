@@ -70,6 +70,7 @@ footer{
   text-align: left;
   font-size: 20%;
   color:var(--whitefont-color);
+  z-index: 100;
 }
 
 .footer-a{
