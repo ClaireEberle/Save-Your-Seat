@@ -1,0 +1,34 @@
+<main class="userview-form">
+
+<h1>Restaurants:</h1>
+{{#each Owner}}
+<div class="form-btn">
+    {{restaurant_name}}
+</div>
+<div class="hide">
+
+<table class="owner-table">
+    <tr>
+        <th>#</th>
+        <th>Main Dish</th>
+        <th>Side</th>
+       
+    </tr>
+    <tr>
+        <div>
+    {{#each Dishes}}
+    <td>{{dishes}}</td>
+    <td>{{side}}</td>
+    
+     <td class="tbleBtn"><button class="delBtn" id="{{id}}">remove</button></td>
+    </tr>
+    {{/each}}
+        </div>
+</table>
+</div>
+{{/each}}
+
+    <button class="form-btn" id="menutohomeBtn">Return to sign-in</button>
+</main>
+
+<script src="/js/allmenus.js"></script>

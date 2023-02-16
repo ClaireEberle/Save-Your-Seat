@@ -10,17 +10,18 @@
     padding:0;
     font-family: sans-serif;
 }
-a{
-  text-decoration: none;
-  color:inherit;
-}
 
 body{
   background-image:url(../css/backgrond.jpg);
-  background-size: cover;
+  background-size:cover;
   background-position: center;
   padding:0;
 
+}
+
+a{
+  text-decoration: none;
+  color:inherit;
 }
 
 main{
@@ -29,8 +30,7 @@ main{
 }
 
 header{
-    font-family: 'Dancing Script', cursive;
-    font-size:500%;
+
     border-bottom:3px solid var(--redbtn-background-color);
     text-align: center;
     padding:1%;
@@ -38,6 +38,11 @@ header{
     color: var(--whitefont-color);
     flex-wrap: wrap;
     
+}
+header h1{
+  padding:1% 0 1% 0;
+  font-size: 600%;
+  font-family: 'Dancing Script', cursive;
 }
 
 footer{
@@ -91,9 +96,6 @@ footer{
   /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
   text-align: center;
   /* text-decoration: none; */
-}
-.nav-bar-a:link{
-  
 }
 
 .nav-bar-b{
