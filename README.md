@@ -11,6 +11,7 @@ The application allows both restaurant-goers and restaurant owners to manage the
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#usage)
+- [screenshots](#screenshots)
 - [Review](#review)
 
 ## User Story
@@ -78,23 +79,25 @@ Step 6: If this is your first time visiting the page as an owner, sign up as an 
 Step 7: Then follow the prompts to create a restaurant, add hours open and tables available <br>
 
 ## License
-MIT License
-Homepage of Save Your Seat
+MIT License <br>
+
+## screenshots
+Homepage<br>
 ![Home page of the website save your seat](https://user-images.githubusercontent.com/67940686/219255770-32b5112a-0b6d-42f1-9d10-f75a7b848448.jpg)
 
-Customer sign in page
+Customer sign in<br>
 ![Customer sign in page](https://user-images.githubusercontent.com/67940686/219256356-4bb46798-307b-43f1-a150-ac91d7fc3736.jpg)
 
-Customer sign up page
+Customer sign up<br>
 ![Customer sign up page](https://user-images.githubusercontent.com/67940686/219256442-4c949b79-d331-40c3-bc7d-7b183791d6f1.jpg)
 
-Owner sign up page
+Owner sign up<br>
 ![Owner's sign up page](https://user-images.githubusercontent.com/67940686/219256476-76cdb21a-62b9-48a3-bcb5-adcdf52d4da8.jpg)
 
-Reservation page to choose a restaurant and date
+Reservation page to choose a restaurant and date<br>
 ![A form to make a reservation](https://user-images.githubusercontent.com/67940686/219256520-c966cfb2-c74d-4a2f-a114-0be7ff74fdf1.jpg)
  
-Time feature to choose an available time
+Time feature to choose an available time<br>
 ![Time page to choose vailable time](https://user-images.githubusercontent.com/67940686/219256591-310d011d-8b6d-43dc-9d78-1294264e888a.jpg)
 
 ## Review
