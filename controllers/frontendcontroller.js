@@ -35,12 +35,13 @@ router.get("/seeallreservation", (req, res) => {
   Reservation.findAll({
     where: { CustomerId: req.session.userId }
     , include: [Owner, Customer]
-  }).then((userdata) => {
+  }).then((rsvdata) => {
     // if(!Customer.Reservation){
     //   res.json(userdata)
     // }
-    const hbsData = userdata.toJSON();
-    res.render("seeallreservation", hbsData);
+    const hbsData = rsvdata.map(rsv=>rsv.toJSON());
+    console.log(hbsData)
+    res.render("seeallreservation", {reservation:hbsData});
   })
 })
 

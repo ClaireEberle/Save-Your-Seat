@@ -13,7 +13,7 @@ sendEmailBtn.addEventListener("click", (e) => {
   const emailObj = {
     customer_name: customerName,
     restaurant: restaurantName,
-    data: partyDate,
+    date: partyDate,
     time: partyTime,
     party_size: partySize,
     email: customerEmail,
@@ -37,16 +37,19 @@ sendEmailBtn.addEventListener("click", (e) => {
 var reservationSection = document.querySelector("#reservation-form");
 var reservationProfile = document.querySelector("#restaurant-profile");
 var cancleBtn = document.querySelector("#cancle-reservation");
+var rsvNumberTag = document.querySelector("#reservation_number")
 
 //*cancle a reservation
 cancleBtn.addEventListener("click", (e) => {
   e.preventDefault();
   //*find reservation and delete data
-  fetch("/api/reservation", {
+  let rsvNum = rsvNumberTag.textContent
+  console.log(rsvNum)
+  fetch(`/api/reservation/${rsvNum}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-    },
+    }
   }).then((res) => {
     if (res.ok) {
       console.log(res)
