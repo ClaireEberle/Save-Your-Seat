@@ -7,9 +7,7 @@ router.post('/',(req,res)=>{
     const output = `
     Dear ${req.body.customer_name}
 
-    You have a reservation with ${req.body.restaurant} on ${req.body.date}
-    at ${req.body.time}.
-    Party size is ${req.body.party_size}
+    You have a reservation with ${req.body.restaurant} on ${req.body.date} at ${req.body.time}. Party size is ${req.body.party_size}.
     
     We are looking forward to seeing you and your party group.
     
