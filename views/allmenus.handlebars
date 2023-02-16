@@ -1,18 +1,18 @@
 <main class="userview-form">
 
 <h1>Restaurants:</h1>
-{{#each Owners}}
+{{#each Owner}}
 <div class="form-btn">
     {{restaurant_name}}
 </div>
-{{/each}}
 <div class="hide">
 
 <table class="owner-table">
     <tr>
+        <th>#</th>
         <th>Main Dish</th>
         <th>Side</th>
-        <th>Remove</th>
+       
     </tr>
     <tr>
         <div>
@@ -26,17 +26,8 @@
         </div>
 </table>
 </div>
+{{/each}}
 
-    <button class="form-btn" id="add-dish">Add item to menu</button>
-    <div class="hide" id="dish-form-div">
-    <form id="add-dish-form">
-        <input type="text" id="addDish" placeholder="new dish"/>
-        <input type="text" id="addSide" placeholder="new side"/>
-        <button class="form-btn" id="save-new-dish">Save New Dish</button>
-    
-    </form>
-         <button class="form-btn" id="cancel-new-dish">Cancel</button>
-    </div>
     <button class="form-btn" id="menutohomeBtn">Return to sign-in</button>
 </main>
 

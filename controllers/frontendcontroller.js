@@ -247,4 +247,19 @@ router.post("/time", (req, res) => {
     });
 });
 
+router.get("/allmenus",(req,res)=>{
+Owner.findAll({
+  include: [Dish],
+}).then((ownerData)=>{
+  const newData = ownerData.map((owner)=>owner.toJSON());
+  console.log(newData);
+  const DishData = newData.Dishes;
+  console.log(DishData)
+  res.render("allmenus", {
+    Owner:newData,
+    dishData:DishData
+  })
+})
+})
+
 module.exports = router;
